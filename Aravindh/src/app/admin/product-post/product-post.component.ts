@@ -86,7 +86,8 @@ export class ProductPostComponent {
         productDetails: new FormControl('', [Validators.required]),
         price: new FormControl('', [Validators.required]),
         image: new FormControl('',[Validators.required]),
-        type: new FormControl('',[Validators.required])
+        type: new FormControl('',[Validators.required]),
+        category: new FormControl('', [Validators.required])
       
        
       });
