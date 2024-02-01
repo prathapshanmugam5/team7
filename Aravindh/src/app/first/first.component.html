@@ -1,0 +1,143 @@
+<nav class="navbar navbar-expand-lg navbar-light  fixed-top bg-light-gray-3" style="width: 100%;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div>
+        <img src="assets/logo/AN.jpg" style="width: 50px; height: 50px; margin-left: 20px; border-radius: 30px;" alt="">
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav" style="padding: 10px;">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" style="margin-left: 40px;" routerLink="/">Home </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" style="margin-left: 30px;" routerLink="/car"><button class="btn btn-warning">products</button></a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/user/login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" style="margin-right: 50px;" routerLink="/user/register">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" style="margin-right: 30px;" routerLink="/user/about">About</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- <div style="width: 100px; position: absolute; text-decoration: none;" class="mt-4">
+
+    <ul class="navbar-nav text-dark" >
+        <li class="nav-item">
+            <a class="nav-link" href="#" style="margin-left: 30px;" routerLink="/spares">Spares</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" style="margin-left: 30px;" routerLink="/spares">Spares</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" style="margin-left: 30px;" routerLink="/spares">Spares</a>
+        </li>
+    </ul>
+</div> -->
+
+<!-- <div id="imageCarousel" class="carousel slide" data-ride="carousel" data-interval="2500" style="margin-top: 150px;">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="assets/logo/Slide1.jpg" class="d-block" alt="Image 1"
+                style="height: 600px;  border-radius: 35px; margin-left: 14%; width: 1400px;">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/logo/Slide2.webp" class="d-block" alt="Image 2"
+                style="height: 600px; border-radius: 35px;  margin-left: 14%; width: 1400px;">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/logo/Slide3.jpeg" class="d-block" alt="Image 2"
+                style="height: 600px; border-radius: 35px;  margin-left: 14%; width: 1400px;">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/logo/Slide4.jpg" class="d-block" alt="Image 2"
+                style="height: 600px; border-radius: 35px;  margin-left: 14%; width: 1400px;">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/logo/Slide5.jpg" class="d-block" alt="Image 2"
+                style="height: 600px; border-radius: 35px;  margin-left: 14%; width: 1400px;">
+        </div>
+         Add more carousel items as needed 
+    </div>
+    
+
+     Navigation controls 
+    <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev" style="margin-left: 400px;">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next" style="margin-right: 400px;">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+
+     Bottom slide buttons (indicators)
+    <ol class="carousel-indicators">
+        <li data-target="#imageCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#imageCarousel" data-slide-to="1"></li>
+        <li data-target="#imageCarousel" data-slide-to="2"></li>
+        <li data-target="#imageCarousel" data-slide-to="3"></li>
+        <li data-target="#imageCarousel" data-slide-to="4"></li>
+         Add more indicators as needed based on the number of carousel items 
+    </ol>
+</div> 
+-->
+
+
+<div id="imageCarousel" class="carousel slide bg-light-red-4" data-ride="carousel" data-interval="2500" style="margin-top: 150px;">
+    <div class="carousel-inner">
+      <div *ngFor="let image of allImage; let i = index" class="carousel-item" [class.active]="i === 0">
+        <img [src]="image.image" class="d-block" [alt]="'Image ' + (i + 1)"
+          style="height: 600px; border-radius: 35px; margin-left: 14%; width: 1400px;">
+      </div>
+    </div>
+  
+    <!-- Navigation controls -->
+    <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev" style="margin-left: 400px;">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next" style="margin-right: 400px;">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  
+    <!-- Bottom slide buttons (indicators) -->
+    <ol class="carousel-indicators">
+      <li *ngFor="let image of allImage; let i = index" data-target="#imageCarousel" [attr.data-slide-to]="i" [class.active]="i === 0"></li>
+    </ol>
+  </div>
+  
+  
+
+<nav class="navbar navbar-expand-sm navbar-light bg-dark bottom-navbar text-light">
+    <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+            <a class="nav-link text-light" href="#" routerLink="/account">My Account</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" href="#" routerLink="/orders">My Orders</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" href="#" routerLink="/cart">My Cart</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" href="#" routerLink="/help">Help</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ">
+        <li class="nav-item">
+            <a href="#" class="nav-link text-light" routerLink="/admin">Admin</a>
+        </li>
+    </ul>
+</nav>
