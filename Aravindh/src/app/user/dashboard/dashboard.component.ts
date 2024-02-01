@@ -125,30 +125,13 @@ export class DashboardComponent implements OnInit {
 
  // Add the following method for search functionality
 searchProducts() {
-  console.log('searching products...');
-  // Filter products based on the search term
-  this.searchResults = this.searchTerm.trim() !== '' ?
-    this.product.filter(product =>
-      product.productName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      product.price.toString().includes(this.searchTerm.trim())
-    ) : [];
+  this.ser.getproductByNameUsingFilter(this.searchTerm).subscribe((res)=>{
+    this.searchResults=res;
+  })
 
-  // If the search term is empty, clear the results
-  if (this.searchTerm.trim() === '') {
+  if(this.searchTerm ===''){
     this.clearSearch();
   }
-
-  console.log('searchTerm:', this.searchTerm);
-  console.log('searchResults:', this.searchResults);
-
-  if (this.searchResults.length === 0) {
-   
-      this.cdr.detectChanges();
-      console.log('No results found.');
-   
-  }
-
-  this.cdr.detectChanges();
 }
 
 
