@@ -86,6 +86,13 @@ public class ProductController {
     	
     }
     
+    
+    @GetMapping(value="/getproductByNameUsingFilter/{productName}")
+    
+    public List<Product> getproductByNameUsingFilter(@PathVariable String productName ){
+    	return prorepo.getProductsByNameUsingFilter(productName);
+    }
+    
      
   
     

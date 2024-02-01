@@ -63,6 +63,15 @@ export class ProductService {
     return this.http.get<any[]>(`${this.baseurl}getByTypeCategory/${type}/${category}`);
 
   }
+
+
+  
+
+  getproductByNameUsingFilter(productName:string){
+    return this.http.get<any[]>(`${this.baseurl}getproductByNameUsingFilter/${productName}`);
+
+  }
+
   
 
 
