@@ -97,7 +97,12 @@ export class ProductPostComponent {
 
    register() {
   
-      // Add your registration logic here
+      let x=this.registrationForm.value.type;
+      this.registrationForm.value.type=x.toUpperCase();
+
+      let y=this.registrationForm.value.category;
+      this.registrationForm.value.category=y.toUpperCase();
+      
       const reg = this.registrationForm.value as Product
       console.log(reg);
       this.ser.postProduct(reg).subscribe((res)=>{
