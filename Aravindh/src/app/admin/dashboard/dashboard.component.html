@@ -18,7 +18,7 @@
             
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    product
+                    PRODUCT
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" *ngFor="let nav of navbarType" (click)="navigateToType(nav)">{{nav}}</a>
@@ -35,7 +35,7 @@
 
 <div><button (click)="goToProductPage()" class="btn btn-success">POSTPRODUCT</button></div>
 
-    <div><button (click)="goToAddImagePage()" class="btn btn-primary ms-3">ADDIMAGE</button></div>
+    <div><button (click)="goToAddImagePage()" class="btn  ms-3"><i class="fa-regular fa-square-plus" style="color: #000000; font-size: 30px;"></i></button></div>
     </div>
 </nav>
 
@@ -48,8 +48,11 @@
             <p class="card-text">{{ singleProduct.productDetails }}</p>
             <p class="card-price">{{ singleProduct.price | currency:'INR':'symbol':'1.2-2' }}</p>
             <div class="product-buttons">
-                <button class="btn btn-success" (click)="UpdateProduct(singleProduct.id)">Update</button>
-                <button class="btn btn-danger" style="margin-left: 10px;" (click)="DeleteProduct(singleProduct.id)">Delete</button>
+                <button class="btn " (click)="UpdateProduct(singleProduct.id)"><i class="fa-regular fa-pen-to-square" style="color: #0ba908;font-size: 30px;"></i></button>
+                <button class="btn " style="margin-left: 10px;" (click)="DeleteProduct(singleProduct.id)">
+                    <i class="fa-solid fa-trash" style="color:rgb(197, 6, 6);font-size: 30px;"></i>
+                  
+                   </button>
             </div>
         </div>
     </div>
