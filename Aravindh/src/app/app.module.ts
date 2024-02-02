@@ -10,6 +10,7 @@ import {   HttpClientModule} from '@angular/common/http';
 import { ProductComponent } from './product/product.component';
 import { CategoryComponent } from './category/category.component';
 import { TypeComponent } from './type/type.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -21,6 +22,7 @@ import { TypeComponent } from './type/type.component';
     ProductComponent,
     CategoryComponent,
     TypeComponent,
+    FooterComponent,
   
 
   ],
