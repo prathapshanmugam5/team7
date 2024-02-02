@@ -37,16 +37,23 @@
 
 <!-- Product details -->
 <div class="container product-container mt-5">
-    <div *ngFor="let singleProduct of product" class="card product-card">
-        <img [src]="singleProduct.image" alt="{{ singleProduct.productName }}" class="card-img-top">
-        <div class="card-body">
+    <ul class="list-group">
+      <li *ngFor="let singleProduct of product" class="list-group-item">
+        <div class="row">
+          <div class="col-md-3">
+            <img [src]="singleProduct.image" alt="{{ singleProduct.productName }}" class="img-thumbnail">
+          </div>
+          <div class="col-md-9">
             <h5 class="card-title">{{ singleProduct.productName }}</h5>
             <p class="card-text">{{ singleProduct.productDetails }}</p>
             <p class="card-price">{{ singleProduct.price | currency:'INR':'symbol':'1.2-2' }}</p>
             <div class="product-buttons">
-                <button class="btn btn-warning" (click)="goBuy()">Buy Now</button>
-                <button class="btn btn-primary" style="margin-left: 10px;" (click)="AddToCart()">Add to Cart</button>
+              <button class="btn btn-warning" (click)="goBuy()">Buy Now</button>
+              <button class="btn btn-primary ml-2" (click)="AddToCart()">Add to Cart</button>
             </div>
+          </div>
         </div>
-    </div>
-</div>
+      </li>
+    </ul>
+  </div>
+  
