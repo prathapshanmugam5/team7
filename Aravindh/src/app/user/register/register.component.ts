@@ -12,6 +12,10 @@ import { CarService } from 'src/app/car.service';
 })
 export class RegisterComponent implements OnInit {
 
+  showPassword: boolean = false;
+  eyeIcon: string = 'fas fa-eye-slash'; 
+
+
   userDetails: Car[] = [];
   registrationForm: FormGroup;
 
@@ -63,5 +67,9 @@ export class RegisterComponent implements OnInit {
       const isUsernameExists = this.userDetails.some(user => user.name === username);
       return Promise.resolve(isUsernameExists ? { usernameExists: true } : null);
     };
+  }
+ togglePassword(): void {
+    this.showPassword = !this.showPassword;
+    this.eyeIcon = this.showPassword ? 'fas fa-eye' : 'fas fa-eye-slash';
   }
 }
