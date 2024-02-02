@@ -11,12 +11,15 @@
             <li class="nav-item active">
                 <a class="nav-link" routerLink="/">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" routerLink="/car"><button class="btn btn-warning">products</button></a>
-            </li>
-            <li class="nav-item" *ngFor="let nav of navbarType">
-                <a class="nav-link" (click)="navigateToType(nav)">{{nav}}</a>
-            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  product
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" *ngFor="let nav of navbarType" (click)="navigateToType(nav)">{{nav}}</a>
+              </div>
+          </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">

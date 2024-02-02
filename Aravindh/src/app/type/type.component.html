@@ -15,9 +15,15 @@
                 <a class="nav-link" href="#" routerLink="/car">Cars</a>
             </li>
           
-              <li class="nav-item" *ngFor="let type of typeResultUnique">
-                <a class="nav-link" (click)="navigateTocategory(type)">{{type}}</a>
-              </li>
+             
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{type}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" *ngFor="let category of  typeResultUnique" (click)="navigateTocategory(category)">{{ category}}</a>
+                </div>
+            </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">
