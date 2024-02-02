@@ -13,6 +13,7 @@ import { AboutComponent } from './about/about.component';
 import { ProductComponent } from './product/product.component';
 import { CategoryComponent } from './category/category.component';
 import { TypeComponent } from './type/type.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { TypeComponent } from './type/type.component';
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ]
 })
 export class UserModule { }
