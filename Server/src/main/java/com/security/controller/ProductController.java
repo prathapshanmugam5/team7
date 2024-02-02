@@ -3,7 +3,6 @@ package com.security.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -93,11 +92,7 @@ public class ProductController {
     	return prorepo.getProductsByNameUsingFilter(productName);
     }
     
-  @GetMapping(value="/getproductBypriceUsingFilter/{price}")
-    
-    public List<Product> getproductBypriceUsingFilter(@PathVariable String price ){
-    	return prorepo.getProductsByNameUsingFilter(price);
-    }
+
     
     
   

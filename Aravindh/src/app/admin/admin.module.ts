@@ -12,6 +12,7 @@ import { CategoryComponent } from './category/category.component';
 import { CarosualComponent } from './carosual/carosual.component';
 import { CarosualUpdateComponent } from './carosual-update/carosual-update.component';
 import { TypeComponent } from './type/type.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { TypeComponent } from './type/type.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ReactiveFormsModule,FormsModule
+    ReactiveFormsModule,FormsModule,
+    MatSnackBarModule
   ]
 })
 export class AdminModule { }

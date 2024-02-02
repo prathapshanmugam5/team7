@@ -10,6 +10,8 @@ import {   HttpClientModule} from '@angular/common/http';
 import { ProductComponent } from './product/product.component';
 import { CategoryComponent } from './category/category.component';
 import { TypeComponent } from './type/type.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -30,7 +32,10 @@ import { TypeComponent } from './type/type.component';
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
