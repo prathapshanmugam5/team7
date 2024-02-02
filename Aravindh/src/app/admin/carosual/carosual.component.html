@@ -3,12 +3,12 @@
 
 
 <div class="container mt-5">
-    <h2 class="textdark" style="margin-left: 46%;">Add Carosual Image</h2>
+    <h2 class="textdark" style="margin-left: 37%;">ADD CAROSUAL IMAGE</h2>
     <div class="col-md-6 offset-md-3">
         <form [formGroup]="registrationForm">
 
             <div>
-                <label for="image">Image:</label>
+                <label for="image">IMAGE:</label>
                 <input type="file" id="image" (change)="onFileChange($event)" required>
             </div>
             <div *ngIf="registrationForm.get('image')?.value">
@@ -30,9 +30,9 @@
         <div class="card-body">
 
             <div class="product-buttons">
-                <button class="btn btn-success" (click)="UpdateImage(singleProduct.id)">Update</button>
-                <button class="btn btn-danger" style="margin-left: 10px;"
-                    (click)="DeleteImage(singleProduct.id)">Delete</button>
+                <button class="btn" (click)="UpdateImage(singleProduct.id)"><i class="fa-regular fa-pen-to-square" style="color: #0ba908;font-size: 30px;"></i></button>
+                <button class="btn " style="margin-left: 10px;"
+                    (click)="DeleteImage(singleProduct.id)"><i class="fa-solid fa-trash" style="color:rgb(197, 6, 6);font-size: 30px;"></i></button>
             </div>
         </div>
     </div>

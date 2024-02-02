@@ -3,12 +3,12 @@
 
 
 <div class="container mt-5">
-    <h2 class="textdark" style="margin-left: 46%;">Update Carosual Image</h2>
+    <h2 class="textdark" style="margin-left: 37%;">UPDATE CAROSUAL IMAGE</h2>
     <div class="col-md-6 offset-md-3">
         <form [formGroup]="registrationForm">
 
             <div>
-                <label for="image">Image:</label>
+                <label for="image">IMAGE:</label>
                 <input type="file" id="image" (change)="onFileChange($event)" required>
             </div>
             <div *ngIf="registrationForm.get('image')?.value">
