@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl, ValidationErrors, AsyncValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 
+
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 import { Car } from 'src/app/car';
 import { CarService } from 'src/app/car.service';
 
@@ -12,10 +15,14 @@ import { CarService } from 'src/app/car.service';
 })
 export class RegisterComponent implements OnInit {
 
+  showPassword: boolean = false;
+  eyeIcon: string = 'fas fa-eye-slash'; 
+
+
   userDetails: Car[] = [];
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private ser: CarService, private route: Router) {
+  constructor(private fb: FormBuilder, private ser: CarService, private route: Router,private matSnak:MatSnackBar) {
     this.registrationForm = this.createRegistrationForm();
   }
 
@@ -48,7 +55,7 @@ export class RegisterComponent implements OnInit {
     const reg = this.registrationForm.value as Car;
     console.log(reg);
     this.ser.signup(reg).subscribe((res) => {
-      alert("Registration Successful");
+      this.matSnak.open("Register Success");
       this.route.navigate(['user', 'login']);
     });
   }
@@ -63,5 +70,9 @@ export class RegisterComponent implements OnInit {
       const isUsernameExists = this.userDetails.some(user => user.name === username);
       return Promise.resolve(isUsernameExists ? { usernameExists: true } : null);
     };
+  }
+ togglePassword(): void {
+    this.showPassword = !this.showPassword;
+    this.eyeIcon = this.showPassword ? 'fas fa-eye' : 'fas fa-eye-slash';
   }
 }

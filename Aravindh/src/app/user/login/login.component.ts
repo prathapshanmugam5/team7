@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 import { Car } from 'src/app/car';
@@ -9,7 +10,8 @@ import { CarService } from 'src/app/car.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'] 
+ 
 })
 export class LoginComponent {
 
@@ -17,7 +19,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string;  // Add a variable to store the error message
 
-  constructor(private formBuilder: FormBuilder, private route: Router, private ser: CarService) { }
+  constructor(private formBuilder: FormBuilder, private route: Router, private ser: CarService,private matSnak:MatSnackBar) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -32,6 +34,8 @@ export class LoginComponent {
       ],
     });
   }
+
+ 
 
   login() {
     const log = this.loginForm.value as Car;
@@ -50,12 +54,18 @@ export class LoginComponent {
         };
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('token', res.token); // Assuming 'token' is the key for the token in the response
-  
+        
+        const snackBarConfig: MatSnackBarConfig = {
+          panelClass: ['custom-snackbar'],
+          duration: 3000
+        };
         if (res.roles === 'ADMIN') {
-          alert('Login Success');
+          this.matSnak.open('Login Success', 'Close', snackBarConfig);
           this.route.navigate(['admin', 'dashboard']);
         } else if (res.roles === 'USER') {
-          alert('Login success');
+         
+          
+          this.matSnak.open('Login Success', 'Close', snackBarConfig);
           this.route.navigate(['user', 'dashboard']);
         } else {
           alert('Invalid user');
@@ -63,12 +73,13 @@ export class LoginComponent {
       },
       (error: HttpErrorResponse) => {
         this.errorMessage = error.error;  // Get the error message from the response
-        alert(this.errorMessage);
+        this.matSnak.open(`${this.errorMessage}`, 'Close', { duration: 3000 });
   
       }
     );
   }
   
+
 
  
 
