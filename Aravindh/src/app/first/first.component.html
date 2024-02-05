@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light  fixed-top" style="width: 100%;">
+<!-- <nav class="navbar navbar-expand-lg fixed-top" style="width: 100%; background-color: rgb(34, 38, 38);">
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,76 +10,309 @@
     <div class="collapse navbar-collapse" id="navbarNav" style="padding: 10px;">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#" style="margin-left: 40px;" routerLink="/">Home </a>
+                <a class="nav-link" href="#" style="margin-left: 40px; transition: all 0.3s;" routerLink="/">
+                    HOME
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" style="margin-left: 30px;" routerLink="/car"><button class="btn btn-warning">products</button></a>
+                <a class="nav-link" href="#" style="margin-left: 30px; transition: all 0.3s;" routerLink="/car">
+                    PRODUCTS
+                </a>
             </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#" routerLink="/user/login">Login</a>
+                <a class="nav-link" href="#" style="transition: all 0.3s;" routerLink="/user/login">
+                    LOGIN
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" style="margin-right: 50px;" routerLink="/user/register">Register</a>
+                <a class="nav-link" href="#" style="margin-right: 50px; transition: all 0.3s;" routerLink="/user/register">
+                    REGISTER
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" style="margin-right: 30px;" routerLink="/user/about">About</a>
+                <a class="nav-link" href="#" style="margin-right: 30px; transition: all 0.3s;" routerLink="/user/about">
+                    ABOUT
+                </a>
             </li>
         </ul>
     </div>
+</nav> -->
+
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <div class="navbar-brand  ms-5">
+            <img src="assets/logo/Screenshot from 2024-02-02 17-07-10.png" class="brand-logo" alt="">
+
+        </div>
+        <div class="navbar-nav"></div>
+        <div class="navbar-nav">
+            <div class="search">
+                <input type="text" class="search-box" placeholder="search brand, product">
+                <button class="search-btn">search</button>
+
+            </div>
+
+        </div>
+
+        <div class="navbar-nav">
+
+            <a class="nav-link" href="#" style="transition: all 0.3s;" routerLink="/user/login">
+                LOGIN
+            </a>
+            <a class="nav-link" href="#" style="margin-right: 50px; transition: all 0.3s;" routerLink="/user/register">
+                REGISTER
+            </a>
+
+            <a class="nav-link" href="#" style="margin-right: 30px; transition: all 0.3s;" routerLink="/user/about">
+                ABOUT
+            </a>
+        </div>
+        
+    </div>
 </nav>
 
-<div id="imageCarousel" class="carousel slide bg-light-red-4" data-ride="carousel" data-interval="2500" style="margin-top: 150px;">
+
+
+
+
+
+<div id="imageCarousel" class="carousel slide" data-ride="carousel" data-interval="5000" style="margin-top: 150px;">
+    <!-- Carousel Inner -->
     <div class="carousel-inner">
-      <div *ngFor="let image of allImage; let i = index" class="carousel-item" [class.active]="i === 0">
-        <img [src]="image.image" class="d-block" [alt]="'Image ' + (i + 1)"
-          style="height: 600px; border-radius: 35px; margin-left: 14%; width: 1400px;">
-      </div>
+        <div *ngFor="let image of allImage; let i = index" class="carousel-item" [class.active]="i === 0">
+            <img [src]="image.image" class="d-block w-75 mx-auto" [alt]="'Image ' + (i + 1)"
+                style="height: 600px; object-fit: cover;">
+        </div>
     </div>
-  
+
     <!-- Navigation controls -->
     <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev" style="margin-left: 400px;">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
     </a>
     <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next" style="margin-right: 400px;">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
     </a>
-  
+
     <!-- Bottom slide buttons (indicators) -->
     <ol class="carousel-indicators">
-      <li *ngFor="let image of allImage; let i = index" data-target="#imageCarousel" [attr.data-slide-to]="i" [class.active]="i === 0"></li>
+        <li *ngFor="let image of allImage; let i = index" data-target="#imageCarousel" [attr.data-slide-to]="i"
+            [class.active]="i === 0"></li>
     </ol>
-  </div>
-  
-  
+</div>
 
-<nav class="navbar navbar-expand-sm navbar-light bg-dark bottom-navbar text-light">
-    <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-            <a class="nav-link text-light" href="#" routerLink="/account">My Account</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-light" href="#" routerLink="/orders">My Orders</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-light" href="#" routerLink="/cart">My Cart</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-light" href="#" routerLink="/help">Help</a>
-        </li>
-    </ul>
-    <ul class="navbar-nav ">
-        <li class="nav-item">
-            <a href="#" class="nav-link text-light" routerLink="/admin">Admin</a>
-        </li>
-    </ul>
 
-</nav>
+
+<header class="hero-section">
+    <div class="content">
+        <img src="assets/logo/istockphoto-992046972-1024x1024.jpg" height="800px"  alt="">
+        <p class="sub-heading">best fashion collection of all time</p>
+    </div>
+</header>
 
 
 
 
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+<footer id="dk-footer" class="dk-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-4">
+                <div class="dk-footer-box-info">
+                   
+                    <p class="footer-info-text" style="color: aliceblue;">
+                        An eCommerce service is a digital platform that enables online buying and selling of goods and services. It serves as a virtual marketplace where businesses and consumers can engage in transactions over the internet. Key components of an eCommerce service include product listings, secure payment gateways, order processing, and delivery logistics.
+                    </p>
+                    <div class="footer-social-link">
+                        <h3>Follow us</h3>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End Social link -->
+                </div>
+                <!-- End Footer info -->
+                <div class="footer-awarad">
+                    <img src="images/icon/best.png" alt="">
+                    <p>Company 2024</p>
+                </div>
+            </div>
+            <!-- End Col -->
+            <div class="col-md-12 col-lg-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="contact-us">
+                            <div class="contact-icon">
+                                <i class="fa fa-map-o" aria-hidden="true"></i>
+                            </div>
+                            <!-- End contact Icon -->
+                            <div class="contact-info">
+                                <h3>Trichy TamilNadu</h3>
+                                <p>Pulivalam</p>
+                            </div>
+                            <!-- End Contact Info -->
+                        </div>
+                        <!-- End Contact Us -->
+                    </div>
+                    <!-- End Col -->
+                    <div class="col-md-6">
+                        <div class="contact-us contact-us-last">
+                            <div class="contact-icon">
+                                <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                            </div>
+                            <!-- End contact Icon -->
+                            <div class="contact-info">
+                                <h3>7092098145</h3>
+                                <p>Give us a call</p>
+                            </div>
+                            <!-- End Contact Info -->
+                        </div>
+                        <!-- End Contact Us -->
+                    </div>
+                    <!-- End Col -->
+                </div>
+                <!-- End Contact Row -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="footer-widget footer-left-widget">
+                            <div class="section-heading">
+                                <h3>Useful Links</h3>
+                                <span class="animate-border border-black"></span>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="#">About us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Services</a>
+                                </li>
+                                <li>
+                                    <a href="#">Projects</a>
+                                </li>
+                                <li>
+                                    <a href="#">Our Team</a>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <a href="#">Contact us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Blog</a>
+                                </li>
+                               
+                                <li>
+                                    <a href="#">Faq</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End Footer Widget -->
+                    </div>
+                    <!-- End col -->
+                    <div class="col-md-12 col-lg-6">
+                        <div class="footer-widget">
+                            <div class="section-heading">
+                                <h3>Subscribe</h3>
+                                <span class="animate-border border-black"></span>
+                            </div>
+                            <p><!-- Don’t miss to subscribe to our new feeds, kindly fill the form below. -->
+                                Reference site about Lorem Ipsum, giving information on its origins, as well.</p>
+                            <form action="#">
+                                <div class="form-row">
+                                    <div class="col dk-footer-form">
+                                        <input type="email" class="form-control" placeholder="Email Address">
+                                        <button type="submit">
+                                            <i class="fa fa-send"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- End form -->
+                        </div>
+                        <!-- End footer widget -->
+                    </div>
+                    <!-- End Col -->
+                </div>
+                <!-- End Row -->
+            </div>
+            <!-- End Col -->
+        </div>
+        <!-- End Widget Row -->
+    </div>
+    <!-- End Contact Container -->
+
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span>Copyright © 2024, All Right Reserved India</span>
+                </div>
+                <!-- End Col -->
+                <div class="col-md-6">
+                    <div class="copyright-menu">
+                        <ul>
+                            <li>
+                                <a href="#">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Terms</a>
+                            </li>
+                            <li>
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End col -->
+            </div>
+            <!-- End Row -->
+        </div>
+        <!-- End Copyright Container -->
+    </div>
+    <!-- End Copyright -->
+    <!-- Back to top -->
+    <div id="back-to-top" class="back-to-top">
+        <button class="btn btn-dark" title="Back to Top" style="display: block;">
+            <i class="fa fa-angle-up"></i>
+        </button>
+    </div>
+    <!-- End Back to top -->
+</footer>
