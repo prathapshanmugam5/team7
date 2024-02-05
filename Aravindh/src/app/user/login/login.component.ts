@@ -78,6 +78,14 @@ export class LoginComponent {
       }
     );
   }
+
+  showPassword: boolean = false;
+  eyeIcon: string = 'fas fa-eye-slash'; 
+
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
+    this.eyeIcon = this.showPassword ? 'fas fa-eye' : 'fas fa-eye-slash';
+  }
   
 
 
