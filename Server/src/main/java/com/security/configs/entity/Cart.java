@@ -15,6 +15,7 @@ public class Cart {
 	    private int id;
 	    private int userId;
 	    private int productId;
+	    private int itemCount;
 		public int getId() {
 			return id;
 		}
@@ -32,6 +33,12 @@ public class Cart {
 		}
 		public void setProductId(int productId) {
 			this.productId = productId;
+		}
+		public int getItemCount() {
+			return itemCount;
+		}
+		public void setItemCount(int itemCount) {
+			this.itemCount = itemCount;
 		}
 	
 	

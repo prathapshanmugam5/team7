@@ -40,12 +40,15 @@ public class SecurityConfigurationClass {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http.csrf().disable().authorizeHttpRequests()
-				.requestMatchers("/jwt/get", "/jwt/addUser", "/jwt/authenticate", "/jwt/newaccount", "/jwt/getAdmin","/jwt/getAllUser",
-						"/jwt/getUser/{name}", "/product/productPost", "/product/getAllProduct","/product/getBytype/{type}", "product/getById/{id}",
-						"product/deletebyId/{id}", "product/updateById/{id}", "/cart/addCart", "/cart/getCart",
-						"/cart/getCartId/{id}", "/cart/deleteCartId/{productId}/{userId}","/product/getproductByNameUsingFilter/{productName}",
+				.requestMatchers("/jwt/get", "/jwt/addUser", "/jwt/authenticate", "/jwt/newaccount", "/jwt/getAdmin",
+						"/jwt/getAllUser", "/jwt/getUser/{name}", "/product/productPost", "/product/getAllProduct",
+						"/product/getBytype/{type}", "product/getById/{id}", "product/deletebyId/{id}",
+						"product/updateById/{id}", "/cart/addCart", "/cart/getCart", "/cart/getCartId/{id}",
+						"/cart/deleteCartId/{productId}/{userId}", "/product/getproductByNameUsingFilter/{productName}",
 						"/product/getByCategory/{category}", "/image/addImage", "/image/getAllImage",
-						"/image/deleteImageById/{id}","product/getByTypeCategory/{type}/{category}", "/image/updateImageById/{id}","/image/getImageById/{id}")
+						"/cart/updateCart/{productId}/{userId}", "/image/deleteImageById/{id}",
+						"product/getByTypeCategory/{type}/{category}", "/image/updateImageById/{id}",
+						"/image/getImageById/{id}","/cart/getCart/{productId}/{userId}")
 				.permitAll().and().authorizeHttpRequests().requestMatchers("/jwt/**").authenticated().and()
 //				.formLogin().and().build();
 
