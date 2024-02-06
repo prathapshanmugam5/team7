@@ -14,6 +14,7 @@ import { ProductService } from 'src/app/product.service';
 export class CartComponent implements OnInit, AfterContentChecked, AfterViewInit {
 
 
+
   form: FormGroup;
 
   constructor(
@@ -34,7 +35,7 @@ export class CartComponent implements OnInit, AfterContentChecked, AfterViewInit
     this.getByIdDetails();
 
     this.initializeForm();
-
+  this.getAllCart();
 
   }
 
@@ -190,15 +191,38 @@ export class CartComponent implements OnInit, AfterContentChecked, AfterViewInit
     }
   }
 
-  updateQuantity(index: number): void {
+  updateQuantity(index: number, productIds: number): void {
     const controlName = `itemCount${index}`;
-    const itemCountValue = this.form.get(controlName)?.value || 1;
-
+    const itemCountValue = +this.form.get(controlName)?.value || 1;  // Use + to cast to number
+    console.log(itemCountValue);
+  
     // Update the totalAmount for the specific product
     this.totalAmount -= this.total[index] * this.itemCount[index];
     this.itemCount[index] = itemCountValue;
     this.totalAmount += this.total[index] * this.itemCount[index];
+    console.log(productIds, this.user.id, itemCountValue);
+  
+    this.AddtoCartUsingBackend(productIds, this.user.id, itemCountValue);
+   
   }
+  
+
+  AddtoCartUsingBackend(productId:number,userId:number,itemCount:number):void {
+    console.log(productId, userId, itemCount);
+        this.cart.cartUpdate(productId,userId,itemCount).subscribe((res)=>{
+            console.log(res);
+            
+        });
+    }
+
+    DefaultCart:Cart[]=[];
+
+    getAllCart(){
+      this.cart.getCart().subscribe((res)=>{
+          this.DefaultCart=res;
+      })
+    }
+
 
 
 
