@@ -48,7 +48,7 @@ public class SecurityConfigurationClass {
 						"/product/getByCategory/{category}", "/image/addImage", "/image/getAllImage",
 						"/cart/updateCart/{productId}/{userId}", "/image/deleteImageById/{id}",
 						"product/getByTypeCategory/{type}/{category}", "/image/updateImageById/{id}",
-						"/image/getImageById/{id}","/cart/getCart/{productId}/{userId}")
+						"/image/getImageById/{id}","/cart/getCart/{productId}/{userId}","/jwt/updateRoles/{id}")
 				.permitAll().and().authorizeHttpRequests().requestMatchers("/jwt/**").authenticated().and()
 //				.formLogin().and().build();
 

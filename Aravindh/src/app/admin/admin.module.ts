@@ -13,6 +13,7 @@ import { CarosualComponent } from './carosual/carosual.component';
 import { CarosualUpdateComponent } from './carosual-update/carosual-update.component';
 import { TypeComponent } from './type/type.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { GetUserDetailsComponent } from './get-user-details/get-user-details.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     CategoryComponent,
     CarosualComponent,
     CarosualUpdateComponent,
-    TypeComponent
+    TypeComponent,
+    GetUserDetailsComponent
   ],
   imports: [
     CommonModule,

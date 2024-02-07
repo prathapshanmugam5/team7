@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -75,6 +76,14 @@ public class JwtExampleController {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setRoles("USER");
 		 return jwtRepo.save(user);
+	}
+	
+	@PutMapping(value="/updateRoles/{id}")
+	public UserInfo updateRoles(@PathVariable int id,@RequestBody UserInfo u) {
+		UserInfo x=jwtRepo.findById(id).get();
+		x.setRoles(u.getRoles());
+		return jwtRepo.save(x);
+		
 	}
 	
 	

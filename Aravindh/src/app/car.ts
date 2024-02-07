@@ -6,5 +6,5 @@ export class Car {
     age: number;
     mobile: number;
     gender: string;
-    
+    roles:string;
 }
