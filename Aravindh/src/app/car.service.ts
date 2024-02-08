@@ -31,5 +31,10 @@ export class CarService {
   return this.http.put<any>( `${this.baseurl}updateRoles/${id}`,car);
  }
 
+ 
+
+ addDefaultAdmin(car: Car): Observable<any> {
+  return this.http.post<any>(`${this.baseurl}addDefaultAdmin`, car);
+}
 
 }

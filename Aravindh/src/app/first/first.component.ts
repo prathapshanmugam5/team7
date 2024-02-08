@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ImageService } from '../image.service';
 import { Image } from '../image';
 
+import { CarService } from '../car.service';
+import { Car } from '../car';
+
 @Component({
   selector: 'app-first',
   templateUrl: './first.component.html',
@@ -14,19 +17,49 @@ export class FirstComponent implements OnInit {
     localStorage.removeItem('token');
 
     this.getAllimage();
+    this.getAllUser();
 
   }
 
-  allImage:Image[]=[];
+  usersInformation:Car={
+    name: '',
+    id: 0,
+    password: '',
+    age: 0,
+    mobile: 0,
+    gender: '',
+    roles: ''
+  };
 
-  constructor(private imgSer:ImageService){}
+  allImage: Image[] = [];
 
-  getAllimage(){
-    this.imgSer.getAllImage().subscribe((res)=>{
-     this.allImage=res;
-     console.log(this.allImage);
+  constructor(private imgSer: ImageService, private car: CarService) { }
+
+  getAllimage() {
+    this.imgSer.getAllImage().subscribe((res) => {
+      this.allImage = res;
+      console.log(this.allImage);
     });
 
   }
 
+  getAllUser() {
+    this.car.getAllUser().subscribe((res) => {
+      let adminExists = false;
+  
+      for (const user of res) {
+        if (user.name === 'admin') {
+          adminExists = true;
+          break;
+        }
+      }
+  
+      if (!adminExists) {
+        this.car.addDefaultAdmin(this.usersInformation).subscribe((res) => {
+          console.log("Admin Post Success");
+        });
+      }
+    });
+  }
+  
 }
