@@ -1,6 +1,3 @@
-
-
-
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <div class="navbar-brand  ms-5">
@@ -30,7 +27,7 @@
                 ABOUT
             </a>
         </div>
-        
+
     </div>
 </nav>
 
@@ -39,7 +36,7 @@
 
 
 
-<div id="imageCarousel" class="carousel slide" data-ride="carousel" data-interval="5000" style="margin-top: 150px;">
+<div id="imageCarousel" class="carousel slide" data-ride="carousel" data-interval="5000" style="padding-top: 65px;">
     <!-- Carousel Inner -->
     <div class="carousel-inner">
         <div *ngFor="let image of allImage; let i = index" class="carousel-item" [class.active]="i === 0">
@@ -64,16 +61,16 @@
             [class.active]="i === 0"></li>
     </ol>
 </div>
+<br><br><br>
 
-
-
+<!-- 
 <header class="hero-section">
     <div class="content">
         <img src="assets/logo/istockphoto-992046972-1024x1024.jpg" height="800px"  alt="">
         <p class="sub-heading">best fashion collection of all time</p>
     </div>
 </header>
-
+ -->
 
 
 
@@ -83,195 +80,21 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-<footer id="dk-footer" class="dk-footer">
-    <div class="container">
+
+<footer class="bg-dark text-white mt-5 p-4">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 col-lg-4">
-                <div class="dk-footer-box-info">
-                   
-                    <p class="footer-info-text" style="color: aliceblue;">
-                        An eCommerce service is a digital platform that enables online buying and selling of goods and services. It serves as a virtual marketplace where businesses and consumers can engage in transactions over the internet. Key components of an eCommerce service include product listings, secure payment gateways, order processing, and delivery logistics.
-                    </p>
-                    <div class="footer-social-link">
-                        <h3>Follow us</h3>
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- End Social link -->
-                </div>
-                <!-- End Footer info -->
-                <div class="footer-awarad">
-                    <img src="images/icon/best.png" alt="">
-                    <p>Company 2024</p>
+            <div class="col-12 text-center">
+                <div class="footer-social-link">
+                    <!-- Social Media Icons with colors -->
+                    <a href="#" class="text-white mx-2"><i class="fa fa-facebook" style="color: #3b5998;"></i> Facebook</a>
+                    <a href="#" class="text-white mx-2"><i class="fa fa-instagram" style="color: #e4405f;"></i> Instagram</a>
+                    <a href="https://wa.me/6379795820" class="text-white mx-2" target="_blank"><i class="fa fa-whatsapp" style="color: #25d366;"></i> WhatsApp</a>
+                    <a href="https://t.me/your_telegram_channel" class="text-white mx-2" target="_blank"><i class="fa fa-telegram" style="color: #0088cc;"></i> Telegram</a>
+                    <a href="mailto:your.email@gmail.com" class="text-white mx-2"><i class="fa fa-envelope" style="color: #d44638;"></i> Gmail</a>
                 </div>
             </div>
-            <!-- End Col -->
-            <div class="col-md-12 col-lg-8">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="contact-us">
-                            <div class="contact-icon">
-                                <i class="fa fa-map-o" aria-hidden="true"></i>
-                            </div>
-                            <!-- End contact Icon -->
-                            <div class="contact-info">
-                                <h3>Trichy TamilNadu</h3>
-                                <p>Pulivalam</p>
-                            </div>
-                            <!-- End Contact Info -->
-                        </div>
-                        <!-- End Contact Us -->
-                    </div>
-                    <!-- End Col -->
-                    <div class="col-md-6">
-                        <div class="contact-us contact-us-last">
-                            <div class="contact-icon">
-                                <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
-                            </div>
-                            <!-- End contact Icon -->
-                            <div class="contact-info">
-                                <h3>7092098145</h3>
-                                <p>Give us a call</p>
-                            </div>
-                            <!-- End Contact Info -->
-                        </div>
-                        <!-- End Contact Us -->
-                    </div>
-                    <!-- End Col -->
-                </div>
-                <!-- End Contact Row -->
-                <div class="row">
-                    <div class="col-md-12 col-lg-6">
-                        <div class="footer-widget footer-left-widget">
-                            <div class="section-heading">
-                                <h3>Useful Links</h3>
-                                <span class="animate-border border-black"></span>
-                            </div>
-                            <ul>
-                                <li>
-                                    <a href="#">About us</a>
-                                </li>
-                                <li>
-                                    <a href="#">Services</a>
-                                </li>
-                                <li>
-                                    <a href="#">Projects</a>
-                                </li>
-                                <li>
-                                    <a href="#">Our Team</a>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <a href="#">Contact us</a>
-                                </li>
-                                <li>
-                                    <a href="#">Blog</a>
-                                </li>
-                               
-                                <li>
-                                    <a href="#">Faq</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- End Footer Widget -->
-                    </div>
-                    <!-- End col -->
-                    <div class="col-md-12 col-lg-6">
-                        <div class="footer-widget">
-                            <div class="section-heading">
-                                <h3>Subscribe</h3>
-                                <span class="animate-border border-black"></span>
-                            </div>
-                            <p><!-- Don’t miss to subscribe to our new feeds, kindly fill the form below. -->
-                                Reference site about Lorem Ipsum, giving information on its origins, as well.</p>
-                            <form action="#">
-                                <div class="form-row">
-                                    <div class="col dk-footer-form">
-                                        <input type="email" class="form-control" placeholder="Email Address">
-                                        <button type="submit">
-                                            <i class="fa fa-send"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- End form -->
-                        </div>
-                        <!-- End footer widget -->
-                    </div>
-                    <!-- End Col -->
-                </div>
-                <!-- End Row -->
-            </div>
-            <!-- End Col -->
         </div>
-        <!-- End Widget Row -->
     </div>
-    <!-- End Contact Container -->
-
-
-    <div class="copyright">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <span>Copyright © 2024, All Right Reserved India</span>
-                </div>
-                <!-- End Col -->
-                <div class="col-md-6">
-                    <div class="copyright-menu">
-                        <ul>
-                            <li>
-                                <a href="#">Home</a>
-                            </li>
-                            <li>
-                                <a href="#">Terms</a>
-                            </li>
-                            <li>
-                                <a href="#">Privacy Policy</a>
-                            </li>
-                            <li>
-                                <a href="#">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- End col -->
-            </div>
-            <!-- End Row -->
-        </div>
-        <!-- End Copyright Container -->
-    </div>
-    <!-- End Copyright -->
-    <!-- Back to top -->
-    <div id="back-to-top" class="back-to-top">
-        <button class="btn btn-dark" title="Back to Top" style="display: block;">
-            <i class="fa fa-angle-up"></i>
-        </button>
-    </div>
-    <!-- End Back to top -->
 </footer>
+
