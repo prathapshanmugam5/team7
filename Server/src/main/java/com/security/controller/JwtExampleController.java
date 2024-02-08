@@ -1,6 +1,7 @@
 package com.security.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -84,6 +86,20 @@ public class JwtExampleController {
 		x.setRoles(u.getRoles());
 		return jwtRepo.save(x);
 		
+	}
+	
+
+	
+	@PostMapping(value="/addDefaultAdmin")
+	public UserInfo addDefaultAdmin(@RequestBody UserInfo u) {
+		
+		u.setName("admin");
+		u.setPassword(passwordEncoder.encode("Admin@123"));
+		u.setAge(25);
+		u.setGender("male");
+		u.setRoles("ADMIN");
+		u.setMobile(9876543210l);
+		return jwtRepo.save(u);
 	}
 	
 	

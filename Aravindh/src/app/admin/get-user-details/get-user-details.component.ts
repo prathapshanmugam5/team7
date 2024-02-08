@@ -25,8 +25,8 @@ export class GetUserDetailsComponent {
     gender: ''
   }; // Initialize it with an empty string or default value
 
-  AllUserDetails:Car[]=[];
-  constructor(private route: Router, private auth: ProductService, private ser: ProductService,private car:CarService) { }
+  AllUserDetails: Car[] = [];
+  constructor(private route: Router, private auth: ProductService, private ser: ProductService, private car: CarService) { }
 
   ngOnInit(): void {
 
@@ -35,12 +35,25 @@ export class GetUserDetailsComponent {
 
   }
 
-  getAllUserDetails(){
-    this.car.getAllUser().subscribe((res)=>{
-    this.AllUserDetails=res;
-    console.log(this.AllUserDetails);
-    
-    })
+  getAllUserDetails() {
+    this.car.getAllUser().subscribe((res) => {
+
+
+      for (const i in res) {
+
+
+
+        if (this.user.username === res[i].name || "admin" === res[i].name) {
+          console.log(this.user.username === res[i].name);
+
+          continue;
+        } else {
+          this.AllUserDetails.push(res[i]);
+        }
+      }
+    }
+
+    )
   }
 
 
@@ -61,31 +74,30 @@ export class GetUserDetailsComponent {
   }
 
 
- 
+
 
 
   backToDashboard() {
 
-    this.route.navigate(['admin','dashboard']);
+    this.route.navigate(['admin', 'dashboard']);
 
   }
 
-  toggleUserRole(event: any, index: number,id:number) {
+  toggleUserRole(event: any, index: number, id: number) {
     const checked = event.target.checked;
-    
-    
+
     if (checked) {
-      this.Roles.roles="ADMIN"
-        this.car.updateRoles(id,this.Roles).subscribe((res)=>{
-          location.reload();
-        })
+      this.Roles.roles = "ADMIN";
     } else {
-      this.Roles.roles="USER"
-      this.car.updateRoles(id,this.Roles).subscribe((res)=>{
-        location.reload();
-      })
+      this.Roles.roles = "USER";
     }
-}
+
+    this.car.updateRoles(id, this.Roles).subscribe((res) => {
+      // Update the role in AllUserDetails directly
+      this.AllUserDetails[index].roles = this.Roles.roles;
+    });
+  }
+
 
 
 

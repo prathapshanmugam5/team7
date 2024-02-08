@@ -60,10 +60,26 @@
             <td>{{us.roles}}</td>
             
                 <td>
+                    <div>
                     <label class="switch">
                         <input type="checkbox" [checked]="us.roles.toLowerCase() === 'admin'" (change)="toggleUserRole($event, i,us.id)">
-                        <span class="slider"></span>
+                        <span class="slider">
+                          
+                        </span>
+                      
                     </label>
+                    <ng-container *ngIf="us.roles.toLowerCase() === 'admin';else User">
+                        Make User
+                        
+                    </ng-container>
+                    
+                    <ng-template #User>
+                        Make Admin
+                    </ng-template>
+
+                </div>
+             
+                    
                 </td>
                 
             
