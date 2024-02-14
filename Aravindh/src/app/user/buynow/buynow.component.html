@@ -48,9 +48,9 @@
         <div class="card-body">
           <form [formGroup]="orderForm">
             <div class="form-group">
-              <label for="quantity">Quantity</label>
+              <label for="productCount">productCount</label>
 
-              <select name="" id="quantity" formControlName="quantity" class="form-select">
+              <select name="" id="productCount" formControlName="productCount" class="form-select">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -62,9 +62,9 @@
                 <option value="9">9</option>
                 <option value="10">10</option>
               </select>
-              <div *ngIf="orderForm.get('quantity')?.invalid && orderForm.get('quantity')?.touched"
+              <div *ngIf="orderForm.get('productCount')?.invalid && orderForm.get('productCount')?.touched"
                 class="invalid-feedback">
-                Quantity is required
+                productCount is required
               </div>
             </div>
 
@@ -89,9 +89,9 @@
             </div>
 
             <div class="form-group">
-              <label for="mobileNumber">Mobile Number</label>
-              <input type="tel" class="form-control" id="mobileNumber" formControlName="mobileNumber">
-              <div *ngIf="orderForm.get('mobileNumber')?.invalid && orderForm.get('mobileNumber')?.touched"
+              <label for="mobile">Mobile Number</label>
+              <input type="tel" class="form-control" id="mobile" formControlName="mobile">
+              <div *ngIf="orderForm.get('mobile')?.invalid && orderForm.get('mobile')?.touched"
                 class="invalid-feedback">
                 Mobile Number is required
               </div>
