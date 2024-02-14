@@ -30,7 +30,8 @@ export class ImageService {
 
   
   updateImageById(id:number,image:Image){
-    return   this.http.put<any>(`${this.baseurl}updateImageById/${id}`,image);
+    return   this.http.put<any>(`${this.baseurl}updateImageById/${id}`,image);   
+     
 
   }
 

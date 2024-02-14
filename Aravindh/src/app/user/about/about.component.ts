@@ -46,6 +46,8 @@ export class AboutComponent {
 
     // Open in a new tab
     window.location.href = mailtoUrl;
+
+
 }
 
 
