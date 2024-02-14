@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Template</title>
+</head>
+<body>
+    <h2>Your Order Confirmation</h2>
+    <p>
+        <b>Product Name:</b> [[${productName}]]<br/>
+        <b>Product Details:</b> [[${productDetails}]]<br/>
+        <b>Price:</b> [[${price}]]<br/>
+        <img th:src="${imageUrl}" alt="Product Image"/>
+    </p>
+    <p>
+        Thank you for your order!
+    </p>
+</body>
+</html>

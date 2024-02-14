@@ -20,7 +20,14 @@ public interface CartRepositary extends JpaRepository<Cart, Integer>{
 	@Modifying
 	@Query("DELETE FROM Cart c WHERE c.productId = :productId AND c.userId = :userId")
 	void deleteByProductId(@Param("productId") int productId, @Param("userId") int userId);
-
+	
+	@Modifying
+	@Query("UPDATE Cart c SET c.itemCount = :itemCount WHERE c.productId = :productId AND c.userId = :userId")
+	void updateCart(@Param("productId") int productId, @Param("userId") int userId, @Param("itemCount") int itemCount);
+	
+	@Modifying
+	@Query("SELECT c FROM Cart c WHERE c.productId = :productId AND c.userId = :userId")
+	List<Cart> getCart(@Param("productId") int productId, @Param("userId") int userId);
 
 
 

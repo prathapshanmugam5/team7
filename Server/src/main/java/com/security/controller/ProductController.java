@@ -1,8 +1,11 @@
 package com.security.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,11 +39,18 @@ public class ProductController {
     }
     
     @GetMapping(value="/getById/{id}")
-    public Product getById(@PathVariable int id) {
-    	
-    	return prorepo.findById(id).get();
-    	
+    public ResponseEntity<Product> getById(@PathVariable int id) {
+        Optional<Product> optionalProduct = prorepo.findById(id);
+
+        if (optionalProduct.isPresent()) {
+            Product product = optionalProduct.get();
+            return new ResponseEntity<>(product, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            // or you can throw a custom exception, return a default product, etc.
+        }
     }
+
     
     @DeleteMapping(value="/deletebyId/{id}")
     public Product deletebgId(@PathVariable int id) {

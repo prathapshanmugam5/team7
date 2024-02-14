@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from './cart';
@@ -31,13 +31,26 @@ export class CartService {
   }
 
   deleteCart(productId: number,userId:number): Observable<HttpResponse<string>> {
-    // Note the responseType: 'text' to handle non-JSON response
+    
     return this.http.delete<string>(`${this.baseurl}deleteCartId/${productId}/${userId}`, { observe: 'response', responseType: 'text' as 'json' });
   }
 
 
   getCartById(id:number){
     return this.http.get<any[]>(`${this.baseurl}getCartId/${id}`);
+
+  }
+  cartUpdate(productId: number, userId: number, itemCount: number): Observable<any> {
+  const x={itemCount}
+  
+    return this.http.put<any>(`${this.baseurl}updateCart/${productId}/${userId}`,x);
+  }
+
+  
+  
+  getCartProductIdAndUserId(productId: number, userId: number){
+   
+    return this.http.get<Cart[]>(`${this.baseurl}getCart/${productId}/${userId}`);
 
   }
 }

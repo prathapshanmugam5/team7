@@ -93,7 +93,7 @@ export class DashboardComponent implements OnInit {
 
 
   gotoBuyNow(id: number) {
-    this.route.navigate(['user', 'buynow', id]);
+    this.route.navigate(['user','buynow',id]);
 
   }
 

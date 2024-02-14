@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
 
 
 
+
   constructor(private route: Router, private auth: ProductService, private ser: ProductService) { }
 
   ngOnInit(): void {
@@ -135,6 +136,11 @@ gettypeByNav() {
   navigateToType(type: string) {
     this.route.navigate(['admin','type', type]); // Adjust the route as needed
   }
+
+
+  getUserDetalis() {
+    this.route.navigate(['admin','getUserDetails']);
+    }
 
   
 

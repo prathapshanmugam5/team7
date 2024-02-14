@@ -1,7 +1,12 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { Cart } from 'src/app/cart';
 import { CartService } from 'src/app/cart.service';
+import { Order } from 'src/app/order';
+import { OrderService } from 'src/app/order.service';
 import { Product } from 'src/app/product';
 import { ProductService } from 'src/app/product.service';
 
@@ -13,23 +18,16 @@ import { ProductService } from 'src/app/product.service';
 export class BuynowComponent {
 
 
+
+
   goBack() {
     this.route.navigate(['user', 'dashboard']);
   }
 
 
-  constructor(private auth: ProductService, private route: Router, private cart: CartService, private cdr: ChangeDetectorRef) { }
-  ngOnInit(): void {
-
-    this.userDetails();
-
-    this.getByIdDetails();
-
-  }
-
 
   user: any;
-  carts: Cart[];
+  carts: Product;
   DuplicateRemovedCart: Cart[];
   ProductDetails: Product[] = [];
 
@@ -45,41 +43,60 @@ export class BuynowComponent {
     }
   }
 
+
+
+
+  id: number;
+  orderForm: FormGroup;
+  order:Order={
+    productId: 0,
+    email: '',
+    userId: 0,
+    productCount: 0,
+    address: '',
+    amount: 0,
+    mobile: 0
+  };
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: ProductService,
+    private route: Router,
+    private cart: CartService,
+    private cdr: ChangeDetectorRef,
+    private act: ActivatedRoute,
+    private ord:OrderService,
+    private matSnak:MatSnackBar
+  ) {}
+
+  ngOnInit(): void {
+    this.id = this.act.snapshot.params['id']; // Initialize id here
+    console.log(this.id);
+    this.userDetails();
+
+    this.getByIdDetails(); // Call getByIdDetails after id is initialized
+
+    this.orderForm = this.formBuilder.group({
+      productCount: ['', Validators.required],
+      address: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      mobile: ['', Validators.required]
+    });
+  }
+
   getByIdDetails() {
-    this.cart.getCartById(this.user.id).subscribe((res) => {
+    console.log(this.id);
+
+    this.auth.getProductById(this.id).subscribe((res) => {
       console.log(res);
       this.carts = res;
-      this.removeDuplicates();
-    })
-
-  }
-
-  //Remove Duplicate Values
-  removeDuplicates() {
-
-    const unique = this.carts.filter((obj, index) => {
-      return index === this.carts.findIndex(o => obj.productId === o.productId)
     });
-
-    console.log(unique);
-    this.DuplicateRemovedCart = unique;
-    this.getProductDetails();
-
   }
+
 
 
   //Get DuplicateRemovedCart Products
-  getProductDetails() {
-
-    for (let i in this.DuplicateRemovedCart) {
-      this.auth.getProductById(this.DuplicateRemovedCart[i].productId).subscribe((res) => {
-        this.ProductDetails.push(res);
-        this.total += res.price;
-        console.log(this.ProductDetails);
-
-      })
-    }
-  }
+ 
   logout() {
     if (confirm('Confirm Logout')) {
       localStorage.removeItem('user');
@@ -90,12 +107,8 @@ export class BuynowComponent {
     }
   }
 
-  gotoCartPage() {
-    this.route.navigate(['user', 'cart']);
 
-  }
-
-  gotoBuyNow(id: number) {
+  gotoBuyNow() {
     this.route.navigate(['user', 'buynow']);
 
   }
@@ -103,15 +116,38 @@ export class BuynowComponent {
 
 
 
-  deleteCart(productId: number) {
-
-    this.cart.deleteCart(productId, this.user.id).subscribe((res) => {
-      location.reload();
-    })
+  onSubmit() {
+    this.order = this.orderForm.value;
+    this.order.userId = this.user.id;
+    this.order.productId = this.id;
+    this.order.amount = this.carts.price;
+  
+    // Clear the form immediately
+    this.orderForm.reset();
+  
+    // Display a message indicating that the email is being sent
+    this.matSnak.open("Email Sending", 'Close', { duration: 5000 });
+  
+    // Send the email and process the response
+    this.ord.SendEmailAndOrder(this.order).subscribe((res) => {
+      // Once the response is received, navigate to the user dashboard
+      console.log("Email sent successfully!");
+      this.route.navigate(['user', 'dashboard']);
+    });
   }
-
-  total = 0;
-
-
+  
+ 
+  
 
 }
+
+
+ 
+
+
+
+
+
+
+
+
