@@ -16,6 +16,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GetUserDetailsComponent } from './get-user-details/get-user-details.component';
 
 
+
 @NgModule({
   declarations: [
     CartComponent,
@@ -28,12 +29,13 @@ import { GetUserDetailsComponent } from './get-user-details/get-user-details.com
     CarosualUpdateComponent,
     TypeComponent,
     GetUserDetailsComponent
+  
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ]
 })
 export class AdminModule { }

@@ -1,5 +1,3 @@
-
-
 <div><button (click)="goToProductPage()" class="btn btn-success">Back</button></div>
 
 
@@ -7,7 +5,7 @@
 <div class="container mt-5">
     <h2 class="textdark" style="margin-left: 46%;">ADD PRODUCT</h2>
     <div class="col-md-6 offset-md-3">
-        <form [formGroup]="registrationForm" >
+        <form [formGroup]="registrationForm">
             <div class="form-group">
                 <label for="productName">Product Name:</label>
                 <input type="text" class="form-control" id="productName" placeholder="Enter productName"
@@ -21,13 +19,13 @@
             <div class="form-group">
                 <label for="productDetails">productprice</label>
                 <input type="text" class="form-control pb-5" id="productDetails" placeholder="productDetails"
-                    formControlName="productDetails" >
+                    formControlName="productDetails">
                 <!-- Display validation error message -->
                 <div *ngIf="registrationForm.get('productDetails')?.hasError('required') && registrationForm.get('productDetails')?.touched"
                     class="text-danger"> content is required.
                 </div>
-             
-            <!-- </div>
+
+                <!-- </div>
             <div class="form-group">
                 <label for="photo">photo:</label>
                 <input type="file" class="form-control" id="photo" name="photo" placeholder="Enter your mobile number"
@@ -38,7 +36,7 @@
                     photo  is required.
                 </div> -->
 
-              
+
             </div>
 
             <div class="form-group">
@@ -49,7 +47,7 @@
                     class="text-danger">
                     Location is required.
                 </div>
-              
+
             </div>
             <!-- Add this to your form in src/app/register/register.component.html -->
             <!-- <div class="form-group">
@@ -61,12 +59,12 @@
             <div>
                 <label for="image">Image:</label>
                 <input type="file" id="image" (change)="onFileChange($event)" required>
-              </div>
-              <div *ngIf="registrationForm.get('image')?.value">
+            </div>
+            <div *ngIf="registrationForm.get('image')?.value">
                 <img [src]="registrationForm.get('image')?.value" alt="Selected Image" height="100px" width="100px">
-              </div>
+            </div>
 
-              <div class="form-group">
+            <div class="form-group">
                 <label for="category">Category:</label>
                 <input type="text" class="form-control" id="category" placeholder="Enter category"
                     formControlName="category">
@@ -78,10 +76,9 @@
             </div>
             <div class="form-group">
                 <label for="type">Type:</label>
-                <input type="Text" class="form-control" id="type" placeholder="Enter Type"
-                    formControlName="type">
+                <input type="Text" class="form-control" id="type" placeholder="Enter Type" formControlName="type">
                 <!-- Display validation error message -->
-                <div *ngIf="registrationForm.get('Type')?.hasError('required') && registrationForm.get('Type')?.touched"
+                <div *ngIf="registrationForm.get('type')?.hasError('required') && registrationForm.get('type')?.touched"
                     class="text-danger">
                     Title is required.
                 </div>
@@ -93,5 +90,3 @@
         </form>
     </div>
 </div>
-
-

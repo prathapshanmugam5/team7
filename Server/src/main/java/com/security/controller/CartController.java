@@ -2,7 +2,6 @@ package com.security.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+import com.security.MailService.EmailService;
+import com.security.MailService.EmailService;
 import com.security.configs.entity.Cart;
+import com.security.entity.EmailRequest;
 import com.security.repository.CartRepositary;
 
 import jakarta.transaction.Transactional;
@@ -27,6 +30,9 @@ import jakarta.transaction.Transactional;
 public class CartController {
 	@Autowired
 	CartRepositary cartRepo;
+	
+	 @Autowired
+	    private EmailService emailService;
 	
 	
     
@@ -68,6 +74,16 @@ public class CartController {
     public  List<Cart>  getCart(@PathVariable int productId, @PathVariable int userId) {
       return  cartRepo.getCart(productId, userId);
     }
+    
+    @PostMapping("/send-email")
+    public String sendEmail(@RequestBody EmailRequest emailRequest) {
+        // Send email to the provided email address
+        emailService.sendConfirmationEmail(emailRequest);
+        
+        return "Mail Send Success";
+    }
+
+	
     
 
 	

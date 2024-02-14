@@ -1,8 +1,12 @@
 package com.security.configs.service;
 
+import java.util.Properties;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -49,9 +53,9 @@ public class SecurityConfigurationClass {
 						"/cart/updateCart/{productId}/{userId}", "/image/deleteImageById/{id}",
 						"product/getByTypeCategory/{type}/{category}", "/image/updateImageById/{id}",
 						"/image/getImageById/{id}", "/cart/getCart/{productId}/{userId}", "/jwt/updateRoles/{id}",
-						"/jwt/addDefaultAdmin")
+						"/jwt/addDefaultAdmin","/cart/send-email")
 				.permitAll().and().authorizeHttpRequests().requestMatchers("/jwt/**").authenticated().and()
-//				.formLogin().and().build();
+//				
 
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.authenticationProvider(authenticationProvider())
@@ -70,5 +74,21 @@ public class SecurityConfigurationClass {
 	public AuthenticationManager authManager(AuthenticationConfiguration authconfig) throws Exception {
 		return authconfig.getAuthenticationManager();
 	}
+	
+	@Bean
+	public JavaMailSender javaMailSender() {
+	    JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+	    mailSender.setHost("smtp.gmail.com");
+	    mailSender.setPort(587);
+	    mailSender.setUsername("prathapshanmugam5@gmail.com");
+	    mailSender.setPassword("hdlh hkrg lfby wkrb");
+	    
+	    Properties props = mailSender.getJavaMailProperties();
+	    props.put("mail.smtp.auth", "true");
+	    props.put("mail.smtp.starttls.enable", "true");
+
+	    return mailSender;
+	}
+
 
 }
