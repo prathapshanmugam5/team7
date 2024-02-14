@@ -1,8 +1,12 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { Cart } from 'src/app/cart';
 import { CartService } from 'src/app/cart.service';
+import { Order } from 'src/app/order';
+import { OrderService } from 'src/app/order.service';
 import { Product } from 'src/app/product';
 import { ProductService } from 'src/app/product.service';
 
@@ -12,12 +16,7 @@ import { ProductService } from 'src/app/product.service';
   styleUrls: ['./buynow.component.scss']
 })
 export class BuynowComponent {
-onSubmit() {
 
-  console.log("Hello");
-  this.route.navigate(['user', 'dashboard']);
-
-}
 
 
 
@@ -49,6 +48,15 @@ onSubmit() {
 
   id: number;
   orderForm: FormGroup;
+  order:Order={
+    productId: 0,
+    email: '',
+    userId: 0,
+    productCount: 0,
+    address: '',
+    amount: 0,
+    mobile: 0
+  };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -56,7 +64,9 @@ onSubmit() {
     private route: Router,
     private cart: CartService,
     private cdr: ChangeDetectorRef,
-    private act: ActivatedRoute
+    private act: ActivatedRoute,
+    private ord:OrderService,
+    private matSnak:MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -67,10 +77,10 @@ onSubmit() {
     this.getByIdDetails(); // Call getByIdDetails after id is initialized
 
     this.orderForm = this.formBuilder.group({
-      quantity: ['', Validators.required],
+      productCount: ['', Validators.required],
       address: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      mobileNumber: ['', Validators.required]
+      mobile: ['', Validators.required]
     });
   }
 
@@ -98,7 +108,7 @@ onSubmit() {
   }
 
 
-  gotoBuyNow(id: number) {
+  gotoBuyNow() {
     this.route.navigate(['user', 'buynow']);
 
   }
@@ -106,15 +116,38 @@ onSubmit() {
 
 
 
-  deleteCart(productId: number) {
-
-    this.cart.deleteCart(productId, this.user.id).subscribe((res) => {
-      location.reload();
-    })
+  onSubmit() {
+    this.order = this.orderForm.value;
+    this.order.userId = this.user.id;
+    this.order.productId = this.id;
+    this.order.amount = this.carts.price;
+  
+    // Clear the form immediately
+    this.orderForm.reset();
+  
+    // Display a message indicating that the email is being sent
+    this.matSnak.open("Email Sending", 'Close', { duration: 5000 });
+  
+    // Send the email and process the response
+    this.ord.SendEmailAndOrder(this.order).subscribe((res) => {
+      // Once the response is received, navigate to the user dashboard
+      console.log("Email sent successfully!");
+      this.route.navigate(['user', 'dashboard']);
+    });
   }
-
-  total = 0;
-
-
+  
+ 
+  
 
 }
+
+
+ 
+
+
+
+
+
+
+
+

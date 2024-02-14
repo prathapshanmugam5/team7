@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.security.configs.entity.Product;
 import com.security.controller.ProductController;
 import com.security.entity.EmailRequest;
+import com.security.repository.OrderRepositary;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -19,6 +20,9 @@ public class EmailService {
 
 	@Autowired
 	ProductController prod;
+	
+	@Autowired 
+	OrderRepositary order;
 
 	@Autowired
 	private JavaMailSender javaMailSender;
@@ -27,6 +31,9 @@ public class EmailService {
 	private String fromEmail;
 
 	public void sendConfirmationEmail(EmailRequest pro) {
+		
+		order.save(pro);
+		
 		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
 		ResponseEntity<Product> p = prod.getById(pro.getProductId());
