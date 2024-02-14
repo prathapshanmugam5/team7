@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cart } from 'src/app/cart';
 import { CartService } from 'src/app/cart.service';
 import { Product } from 'src/app/product';
@@ -11,6 +12,13 @@ import { ProductService } from 'src/app/product.service';
   styleUrls: ['./buynow.component.scss']
 })
 export class BuynowComponent {
+onSubmit() {
+
+  console.log("Hello");
+  this.route.navigate(['user', 'dashboard']);
+
+}
+
 
 
   goBack() {
@@ -18,18 +26,9 @@ export class BuynowComponent {
   }
 
 
-  constructor(private auth: ProductService, private route: Router, private cart: CartService, private cdr: ChangeDetectorRef) { }
-  ngOnInit(): void {
-
-    this.userDetails();
-
-    this.getByIdDetails();
-
-  }
-
 
   user: any;
-  carts: Cart[];
+  carts: Product;
   DuplicateRemovedCart: Cart[];
   ProductDetails: Product[] = [];
 
@@ -45,41 +44,49 @@ export class BuynowComponent {
     }
   }
 
+
+
+
+  id: number;
+  orderForm: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: ProductService,
+    private route: Router,
+    private cart: CartService,
+    private cdr: ChangeDetectorRef,
+    private act: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.id = this.act.snapshot.params['id']; // Initialize id here
+    console.log(this.id);
+    this.userDetails();
+
+    this.getByIdDetails(); // Call getByIdDetails after id is initialized
+
+    this.orderForm = this.formBuilder.group({
+      quantity: ['', Validators.required],
+      address: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      mobileNumber: ['', Validators.required]
+    });
+  }
+
   getByIdDetails() {
-    this.cart.getCartById(this.user.id).subscribe((res) => {
+    console.log(this.id);
+
+    this.auth.getProductById(this.id).subscribe((res) => {
       console.log(res);
       this.carts = res;
-      this.removeDuplicates();
-    })
-
-  }
-
-  //Remove Duplicate Values
-  removeDuplicates() {
-
-    const unique = this.carts.filter((obj, index) => {
-      return index === this.carts.findIndex(o => obj.productId === o.productId)
     });
-
-    console.log(unique);
-    this.DuplicateRemovedCart = unique;
-    this.getProductDetails();
-
   }
+
 
 
   //Get DuplicateRemovedCart Products
-  getProductDetails() {
-
-    for (let i in this.DuplicateRemovedCart) {
-      this.auth.getProductById(this.DuplicateRemovedCart[i].productId).subscribe((res) => {
-        this.ProductDetails.push(res);
-        this.total += res.price;
-        console.log(this.ProductDetails);
-
-      })
-    }
-  }
+ 
   logout() {
     if (confirm('Confirm Logout')) {
       localStorage.removeItem('user');
@@ -90,10 +97,6 @@ export class BuynowComponent {
     }
   }
 
-  gotoCartPage() {
-    this.route.navigate(['user', 'cart']);
-
-  }
 
   gotoBuyNow(id: number) {
     this.route.navigate(['user', 'buynow']);

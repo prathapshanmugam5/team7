@@ -2,13 +2,16 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Car } from 'src/app/car';
 import { CarService } from 'src/app/car.service';
-import { Product } from 'src/app/product';
+
 import { ProductService } from 'src/app/product.service';
+
 
 @Component({
   selector: 'app-get-user-details',
   templateUrl: './get-user-details.component.html',
-  styleUrls: ['./get-user-details.component.scss']
+  styleUrls: ['./get-user-details.component.scss'],
+ 
+
 })
 export class GetUserDetailsComponent {
 

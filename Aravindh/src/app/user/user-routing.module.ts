@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:"login",component:LoginComponent},
   {path:"dashboard",component:DashboardComponent,canActivate:[AuthGuard]},
   {path:"cart",component:CartComponent,canActivate:[AuthGuard]},
-  {path:"buynow",component:BuynowComponent,canActivate:[AuthGuard]},
+  {path:"buynow/:id",component:BuynowComponent,canActivate:[AuthGuard]},
   {path:"about",component:AboutComponent},
   {path:"product",component:ProductComponent},
   { path: "category/:type/:category", component: CategoryComponent},
