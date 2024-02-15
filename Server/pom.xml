@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.security</groupId>
-	<artifactId>JwtTokenExample</artifactId>
+	<artifactId>Server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>JwtTokenExample</name>
+	<name>Server</name>
 	<description>SecurityProject</description>
 	<properties>
 		<java.version>17</java.version>
