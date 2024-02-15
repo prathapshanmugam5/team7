@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.security.MailService.EmailService;
-import com.security.MailService.EmailService;
+
 import com.security.configs.entity.Cart;
 import com.security.entity.EmailRequest;
 import com.security.repository.CartRepositary;
