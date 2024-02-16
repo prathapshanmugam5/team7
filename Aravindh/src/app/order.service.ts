@@ -16,7 +16,15 @@ export class OrderService {
 
   SendEmailAndOrder(order:Order) {
     
-    return this.http.post<any>(`${this.baseurl}send-email`,order,{ observe: 'response', responseType: 'text' as 'json' });
+    return this.http.post<any>(`${this.baseurl}send-email`,order);
+    //,{ observe: 'response', responseType: 'text' as 'json' }
   }
+  sendEmailConformation(order:Order) {
+    
+    return this.http.post<any>(`${this.baseurl}sendEmailConformation`,order);
+    //,{ observe: 'response', responseType: 'text' as 'json' }
+  }
+
+  
   
 }

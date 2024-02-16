@@ -55,7 +55,7 @@
                     </div>
                     <label for="name" class="sr-only">Username:</label>
                     <input type="text" class="form-control" id="name" placeholder="Enter your username"
-                        formControlName="name">
+                        formControlName="name" autocomplete="username">
                 </div>
                 <!-- Display validation error message -->
                 <div *ngIf="registrationForm.get('name')?.hasError('required') && registrationForm.get('name')?.touched"
@@ -78,7 +78,7 @@
                     </div>
                     <label for="password" class="sr-only">Password:</label>
                     <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" id="password"
-                        placeholder="Enter your password" formControlName="password">
+                        placeholder="Enter your password" formControlName="password" autocomplete="current-password">
 
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" (click)="togglePassword()">

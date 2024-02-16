@@ -74,6 +74,16 @@ public class CartController {
 	public EmailRequest sendEmail(@RequestBody EmailRequest emailRequest) {
 	    // Save the email request
 	    order.save(emailRequest);
+	   
+	    
+	    // Return the saved email request
+	    return emailRequest;
+	}
+	
+	
+	@PostMapping("/sendEmailConformation")
+	public EmailRequest sendEmailConformation(@RequestBody EmailRequest emailRequest) {
+	   
 	    
 	    // Send confirmation email
 	    emailService.sendConfirmationEmail(emailRequest);
@@ -81,5 +91,7 @@ public class CartController {
 	    // Return the saved email request
 	    return emailRequest;
 	}
+	
+	
 
 }
