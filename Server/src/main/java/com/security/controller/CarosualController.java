@@ -35,21 +35,21 @@ public class CarosualController {
 	    }
 	    
 	    @DeleteMapping(value="/deleteImageById/{id}")
-	    public String deleteImageById(@PathVariable int id) {
+	    public String deleteImageById(@PathVariable("id") int id) {
 	    	CarosualRepo.deleteById(id);
 	    	return "Image Deleted Success";
 	    	
 	    }
 	    
 	    @PutMapping(value="/updateImageById/{id}")
-	    public Carosual updateImageById(@PathVariable int id,@RequestBody Carosual i) {
+	    public Carosual updateImageById(@PathVariable("id") int id,@RequestBody Carosual i) {
 	    	Carosual c= CarosualRepo.findById(id).get();
 	    	c.setImage(i.getImage());
 	    	return CarosualRepo.save(c);
 	    }
 	    
 	    @GetMapping(value="/getImageById/{id}")
-	    public Carosual getImageById(@PathVariable int id) {
+	    public Carosual getImageById(@PathVariable("id") int id) {
 	    	return CarosualRepo.findById(id).get();
 	    	
 	    }

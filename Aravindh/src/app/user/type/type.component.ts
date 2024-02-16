@@ -16,17 +16,17 @@ export class TypeComponent {
   user: any;
   product: Product[];
   categories: string[] = [];
-  type:string;
-  typeResult:Product[]=[];
-  typeResultUnique:string[]=[];
+  type: string;
+  typeResult: Product[] = [];
+  typeResultUnique: string[] = [];
 
   constructor(
     private route: Router,
     private activatedRoute: ActivatedRoute,
     private auth: ProductService,
     private ser: ProductService,
-    private cart:CartService
-  ) {}
+    private cart: CartService
+  ) { }
 
   ngOnInit(): void {
     console.log('Checking authentication status...');
@@ -36,9 +36,9 @@ export class TypeComponent {
       this.type = params['type'];
 
 
-       this.userDetails();
+      this.userDetails();
       this.getAll();
-      this. getBytype();
+      this.getBytype();
     });
   }
 
@@ -69,24 +69,24 @@ export class TypeComponent {
       this.product = res;
       console.log(res);
 
-    
+
     });
   }
 
   navigateTotype(type: string) {
-    this.route.navigate(['user','type', type]);
+    this.route.navigate(['user', 'type', type]);
   }
 
   navigateTocategory(category: string) {
-    this.route.navigate(['user','category',this.type, category]);
+    this.route.navigate(['user', 'category', this.type, category]);
   }
 
- 
+
   goBuy() {
 
     alert("Login After Continue");
 
-    this.route.navigate(['user','login']);
+    this.route.navigate(['user', 'login']);
 
 
   }
@@ -102,31 +102,31 @@ export class TypeComponent {
       const uniqueCategories = new Set(res.map(product => product.category));
       this.typeResultUnique = Array.from(uniqueCategories);
       console.log(this.typeResultUnique);
-    
-      
+
+
     });
   }
 
-  AddToCart(productId:number) {
+  AddToCart(productId: number) {
 
-    const userId=this.user.id;
-    const users={productId,userId} as Cart; 
+    const userId = this.user.id;
+    const users = { productId, userId } as Cart;
 
-    this.cart.postCart(users).subscribe((res)=>{
+    this.cart.postCart(users).subscribe((res) => {
       alert("Item Added to Cart");
-     
+
     });
   }
 
   gotoCartPage() {
-        this.route.navigate(['user','cart']);
-  
-      }
+    this.route.navigate(['user', 'cart']);
 
-        gotoBuyNow(id:number) {
-this.route.navigate(['user','buynow',id]);
+  }
 
-}
+  gotoBuyNow(id: number) {
+    this.route.navigate(['user', 'buynow', id]);
+
+  }
 
 
 }
