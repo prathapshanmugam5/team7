@@ -20,8 +20,8 @@ public class EmailService {
 
 	@Autowired
 	ProductController prod;
-	
-	@Autowired 
+
+	@Autowired
 	OrderRepositary order;
 
 	@Autowired
@@ -31,9 +31,7 @@ public class EmailService {
 	private String fromEmail;
 
 	public void sendConfirmationEmail(EmailRequest pro) {
-		
-		order.save(pro);
-		
+
 		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
 		ResponseEntity<Product> p = prod.getById(pro.getProductId());
@@ -43,24 +41,20 @@ public class EmailService {
 			helper.setTo(pro.getEmail());
 			helper.setSubject("Order Confirmation");
 			// Construct the email content using HTML
-            String emailContent = "<p>We are thrilled to inform you that your recent order with oYo has been successfully confirmed. We greatly appreciate your trust in our products/services and are committed to ensuring a seamless shopping experience for you.</p>"
-                    + "<ul>"
-                    + "<li><b>Product Name: </b>" + p.getBody().getProductName() + "</li>"
-                    + "<li><b>Product Details:</b> <span style='color: green;'>" + p.getBody().getProductDetails() + "</span></li>"
-                    + "<li><b>Price: $</b> <span style='color: red;'>" + p.getBody().getPrice() + "</span></li>"
-                    + "</ul>"
-                    + "<p>Rest assured, our team is diligently working to process and fulfill your order promptly. You will receive further updates regarding the status of your order, including tracking information, once it has been dispatched.</p>"
-                    + "<p>If you have any questions or require assistance regarding your order, please do not hesitate to contact our customer support team at aadhiaravindh007@gmail.com. We are here to help!</p>"
-                    + "<p>Thank you once again for choosing oYo. We value your business and look forward to serving you again in the future.</p>"
-                    + "<p>Warm regards,</p>"
-                    + "<p style='color: green;'>Aravindh<br>"
-                    + "CEO<br>"
-                    + "oYo<br>"
-                    + "aadhiaravindh007@gmail.com</p>";
+			String emailContent = "<p>We are thrilled to inform you that your recent order with oYo has been successfully confirmed. We greatly appreciate your trust in our products/services and are committed to ensuring a seamless shopping experience for you.</p>"
+					+ "<ul>" + "<li><b>Product Name: </b>" + p.getBody().getProductName() + "</li>"
+					+ "<li><b>Product Details:</b> <span style='color: green;'>" + p.getBody().getProductDetails()
+					+ "</span></li>" + "<li><b>Price: $</b> <span style='color: red;'>" + p.getBody().getPrice()
+					+ "</span></li>" + "</ul>"
+					+ "<p>Rest assured, our team is diligently working to process and fulfill your order promptly. You will receive further updates regarding the status of your order, including tracking information, once it has been dispatched.</p>"
+					+ "<p>If you have any questions or require assistance regarding your order, please do not hesitate to contact our customer support team at aadhiaravindh007@gmail.com. We are here to help!</p>"
+					+ "<p>Thank you once again for choosing oYo. We value your business and look forward to serving you again in the future.</p>"
+					+ "<p>Warm regards,</p>" + "<p style='color: green;'>Aravindh<br>" + "CEO<br>" + "oYo<br>"
+					+ "aadhiaravindh007@gmail.com</p>";
 
-            helper.setText(emailContent, true);
+			helper.setText(emailContent, true);
 
-            javaMailSender.send(mimeMessage);
+			javaMailSender.send(mimeMessage);
 
 		} catch (MessagingException e) {
 
