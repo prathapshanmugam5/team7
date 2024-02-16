@@ -130,7 +130,9 @@ export class BuynowComponent {
   
     // Send the email and process the response
     this.ord.SendEmailAndOrder(this.order).subscribe((res) => {
-      // Once the response is received, navigate to the user dashboard
+      console.log(res);
+      this.ord.sendEmailConformation(res).subscribe((rus)=>{console.log(res);
+      })
       console.log("Email sent successfully!");
       this.route.navigate(['user', 'dashboard']);
     });

@@ -50,7 +50,7 @@
           </div>
           <label for="username" class="sr-only">Username:</label>
           <input type="text" class="form-control" id="username" placeholder="Enter your username"
-            formControlName="username">
+            formControlName="username" autocomplete="username">
         </div>
         <div *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched"
           class="text-danger">Username is required.
@@ -64,7 +64,7 @@
           </div>
           <label for="password" class="sr-only">Password:</label>
           <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" id="password"
-                        placeholder="Enter your password" formControlName="password">
+                        placeholder="Enter your password" formControlName="password" autocomplete="current-password">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button" (click)="togglePassword()">
                   <i class="{{ eyeIcon }}"></i> <!-- Font Awesome eye icon -->
