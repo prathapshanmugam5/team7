@@ -45,7 +45,7 @@ public class CartController {
 	}
 
 	@GetMapping(value = "/getCartId/{id}")
-	public List<Cart> getById(@PathVariable int id) {
+	public List<Cart> getById(@PathVariable("id") int id) {
 
 		return cartRepo.getUserIdProductDetails(id);
 
@@ -53,20 +53,20 @@ public class CartController {
 
 	@DeleteMapping(value = "/deleteCartId/{productId}/{userId}")
 	@Transactional // Add this annotation
-	public String deletebgId(@PathVariable int productId, @PathVariable int userId) {
+	public String deletebgId(@PathVariable("productId") int productId, @PathVariable("userId") int userId) {
 		cartRepo.deleteByProductId(productId, userId);
 		return "Deleted Success";
 	}
 
 	@PutMapping(value = "/updateCart/{productId}/{userId}")
 	@Transactional
-	public void updateCart(@PathVariable int productId, @PathVariable int userId, @RequestBody Cart cart) {
+	public void updateCart(@PathVariable("productId") int productId, @PathVariable("userId") int userId, @RequestBody Cart cart) {
 		cartRepo.updateCart(productId, userId, cart.getItemCount());
 	}
 
 	@GetMapping(value = "/getCart/{productId}/{userId}")
 	@Transactional
-	public List<Cart> getCart(@PathVariable int productId, @PathVariable int userId) {
+	public List<Cart> getCart(@PathVariable("productId") int productId, @PathVariable("userId") int userId) {
 		return cartRepo.getCart(productId, userId);
 	}
 

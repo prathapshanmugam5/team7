@@ -64,7 +64,7 @@ public class JwtExampleController {
 
 	@GetMapping(value="/getUser/{name}")
 	
-	public UserInfo getUser(@PathVariable String name) {
+	public UserInfo getUser(@PathVariable("name") String name) {
 		return jwtres.findByName(name).get();
 	}
 	
@@ -81,7 +81,7 @@ public class JwtExampleController {
 	}
 	
 	@PutMapping(value="/updateRoles/{id}")
-	public UserInfo updateRoles(@PathVariable int id,@RequestBody UserInfo u) {
+	public UserInfo updateRoles(@PathVariable("id") int id,@RequestBody UserInfo u) {
 		UserInfo x=jwtRepo.findById(id).get();
 		x.setRoles(u.getRoles());
 		return jwtRepo.save(x);
