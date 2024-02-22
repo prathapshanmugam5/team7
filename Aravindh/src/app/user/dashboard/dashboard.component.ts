@@ -5,6 +5,7 @@ import { CartService } from 'src/app/cart.service';
 import { Product } from 'src/app/product';
 import { ProductService } from 'src/app/product.service';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,7 +15,7 @@ export class DashboardComponent implements OnInit {
 
 
    // Add a property to store the search term
-   searchTerm: string = '';
+   searchTerm:string='';
 
    // Add a property to store the search results
    searchResults: Product[] = [];
@@ -125,6 +126,7 @@ export class DashboardComponent implements OnInit {
 
  // Add the following method for search functionality
 searchProducts() {
+
   this.ser.getproductByNameUsingFilter(this.searchTerm).subscribe((res)=>{
     this.searchResults=res;
   })
@@ -132,6 +134,12 @@ searchProducts() {
   if(this.searchTerm ===''){
     this.clearSearch();
   }
+}
+
+onSearchChange(event: Event) {
+  const searchTerm = (event.target as HTMLInputElement).value;
+  this.searchTerm = searchTerm;
+  this.searchProducts();
 }
 
 

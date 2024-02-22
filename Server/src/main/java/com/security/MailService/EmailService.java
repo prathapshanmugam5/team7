@@ -45,7 +45,9 @@ public class EmailService {
 					+ "<ul>" + "<li><b>Product Name: </b>" + p.getBody().getProductName() + "</li>"
 					+ "<li><b>Product Details:</b> <span style='color: green;'>" + p.getBody().getProductDetails()
 					+ "</span></li>" + "<li><b>Price: $</b> <span style='color: red;'>" + p.getBody().getPrice()
-					+ "</span></li>" + "</ul>"
+					+ "</span></li>" + "</ul>" + "<ul>" + "<li><b>Mail: </b>" + pro.getEmail() + "</li>"
+					+ "<li><b>Mobile:</b> <span style='color: blue;'>" + pro.getMobile() + "</span></li>"
+					+ "<li><b>Address: $</b><span style='color: blue;'>" + pro.getAddress() + "</span></li>" + "</ul>"
 					+ "<p>Rest assured, our team is diligently working to process and fulfill your order promptly. You will receive further updates regarding the status of your order, including tracking information, once it has been dispatched.</p>"
 					+ "<p>If you have any questions or require assistance regarding your order, please do not hesitate to contact our customer support team at aadhiaravindh007@gmail.com. We are here to help!</p>"
 					+ "<p>Thank you once again for choosing oYo. We value your business and look forward to serving you again in the future.</p>"

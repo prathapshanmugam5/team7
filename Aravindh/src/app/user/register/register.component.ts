@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
     const reg = this.registrationForm.value as Car;
     console.log(reg);
     this.ser.signup(reg).subscribe((res) => {
-      this.matSnak.open("Register Success");
+      this.ser.openSnackBarGreen("Registration Success");
       this.route.navigate(['user', 'login']);
     });
   }

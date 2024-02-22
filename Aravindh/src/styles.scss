@@ -113,6 +113,21 @@ $color:(
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-  
+
+.red-snackbar {
+    --mdc-snackbar-container-color: white;
+    --mat-snack-bar-button-color: black;
+    --mdc-snackbar-supporting-text-color: red;
+    padding-top: 100px;
+}
+
+
+.green-snackbar {
+    --mdc-snackbar-container-color: white;
+    --mat-snack-bar-button-color: black;
+    --mdc-snackbar-supporting-text-color: green;
+    padding-top: 100px;
+}
   
