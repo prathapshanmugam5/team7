@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Car } from './car';
 import { HttpClient } from '@angular/common/http';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 export class CarService {
 
  
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) { }
   baseurl = 'http://localhost:8080/jwt/';
 
   signup(car: Car): Observable<any> {
@@ -35,6 +36,30 @@ export class CarService {
 
  addDefaultAdmin(car: Car): Observable<any> {
   return this.http.post<any>(`${this.baseurl}addDefaultAdmin`, car);
+}
+
+
+openSnackBarRed(message: string) {
+  this.snackBar.open(message, "Close", {
+    duration: 2000,
+    panelClass: ["red-snackbar"],
+    horizontalPosition: 'start',
+    verticalPosition: 'top'
+  });
+  console.log("Snak Bar Called");
+
+}
+
+
+openSnackBarGreen(message: string) {
+  this.snackBar.open(message, "Close", {
+    duration: 2000,
+    panelClass: ["green-snackbar"],
+    horizontalPosition: 'start',
+    verticalPosition: 'top'
+  });
+  console.log("Snak Bar Called");
+
 }
 
 }

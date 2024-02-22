@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
@@ -14,6 +14,7 @@ import { ProductComponent } from './product/product.component';
 import { CategoryComponent } from './category/category.component';
 import { TypeComponent } from './type/type.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgModule } from '@angular/core';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     FormsModule,
     MatSnackBarModule
+  
   ]
 })
 export class UserModule { }
