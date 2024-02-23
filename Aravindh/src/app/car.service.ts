@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root'
 })
 export class CarService {
+ 
 
  
   constructor(private http: HttpClient, private snackBar: MatSnackBar) { }
@@ -60,6 +61,10 @@ openSnackBarGreen(message: string) {
   });
   console.log("Snak Bar Called");
 
+}
+
+sendVerificationString(randomString: string) {
+  return this.http.get<Car[]>(`${this.baseurl}getAllUser`);
 }
 
 }

@@ -25,6 +25,16 @@ export class OrderService {
     //,{ observe: 'response', responseType: 'text' as 'json' }
   }
 
+  sendOtpVerification(email:string,otp:string) {
+
+    const verifyOtp={email,otp};
+    
+    return this.http.post<any>(`${this.baseurl}sendOtpVerification`,verifyOtp);
+    //,{ observe: 'response', responseType: 'text' as 'json' }
+  }
+
+
+ 
   
   
 }

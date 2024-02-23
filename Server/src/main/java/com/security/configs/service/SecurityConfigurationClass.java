@@ -53,7 +53,7 @@ public class SecurityConfigurationClass {
 						"/cart/updateCart/{productId}/{userId}", "/image/deleteImageById/{id}",
 						"product/getByTypeCategory/{type}/{category}", "/image/updateImageById/{id}",
 						"/image/getImageById/{id}", "/cart/getCart/{productId}/{userId}", "/jwt/updateRoles/{id}",
-						"/jwt/addDefaultAdmin","/cart/send-email","/cart/sendEmailConformation")
+						"/jwt/addDefaultAdmin","/cart/send-email","/cart/sendEmailConformation","/cart/sendOtpVerification")
 				.permitAll().and().authorizeHttpRequests().requestMatchers("/jwt/**").authenticated().and()
 //				
 

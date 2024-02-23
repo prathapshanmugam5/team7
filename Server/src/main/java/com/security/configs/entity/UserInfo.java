@@ -15,11 +15,12 @@ public class UserInfo {
 	private int id;
 	private String name;
 	private String password;
-
+    private String email;
 	private String gender;
 	private int age;
 	private long mobile;
 	private String roles;
+	private String otp;
 
 	
 
@@ -65,6 +66,18 @@ public class UserInfo {
 	}
 	public void setMobile(long mobile) {
 		this.mobile = mobile;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getOtp() {
+		return otp;
+	}
+	public void setOtp(String otp) {
+		this.otp = otp;
 	}
 
 }
