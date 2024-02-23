@@ -8,33 +8,35 @@ import { Order } from './order';
 })
 export class OrderService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   baseurl = 'http://localhost:8080/cart/';
 
-  
 
-  SendEmailAndOrder(order:Order) {
-    
-    return this.http.post<any>(`${this.baseurl}send-email`,order);
+
+  SendEmailAndOrder(order: Order) {
+
+    return this.http.post<any>(`${this.baseurl}send-email`, order);
     //,{ observe: 'response', responseType: 'text' as 'json' }
   }
-  sendEmailConformation(order:Order) {
-    
-    return this.http.post<any>(`${this.baseurl}sendEmailConformation`,order);
-    //,{ observe: 'response', responseType: 'text' as 'json' }
-  }
+  sendEmailConformation(order: Order) {
 
-  sendOtpVerification(email:string,otp:string) {
-
-    const verifyOtp={email,otp};
-    
-    return this.http.post<any>(`${this.baseurl}sendOtpVerification`,verifyOtp);
+    return this.http.post<any>(`${this.baseurl}sendEmailConformation`, order);
     //,{ observe: 'response', responseType: 'text' as 'json' }
   }
 
+  sendOtpVerification(email: string, otp: string) {
 
- 
-  
-  
+    const verifyOtp = { email, otp };
+
+    return this.http.post<any>(`${this.baseurl}sendOtpVerification`, verifyOtp);
+    //,{ observe: 'response', responseType: 'text' as 'json' }
+  }
+
+
+
+
+
+
+
 }

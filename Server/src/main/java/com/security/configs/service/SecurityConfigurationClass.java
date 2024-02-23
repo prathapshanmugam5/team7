@@ -53,7 +53,8 @@ public class SecurityConfigurationClass {
 						"/cart/updateCart/{productId}/{userId}", "/image/deleteImageById/{id}",
 						"product/getByTypeCategory/{type}/{category}", "/image/updateImageById/{id}",
 						"/image/getImageById/{id}", "/cart/getCart/{productId}/{userId}", "/jwt/updateRoles/{id}",
-						"/jwt/addDefaultAdmin","/cart/send-email","/cart/sendEmailConformation","/cart/sendOtpVerification")
+						"/jwt/addDefaultAdmin", "/cart/send-email", "/cart/sendEmailConformation",
+						"/cart/sendOtpVerification","/jwt/ForgetPassword")
 				.permitAll().and().authorizeHttpRequests().requestMatchers("/jwt/**").authenticated().and()
 //				
 
@@ -74,21 +75,20 @@ public class SecurityConfigurationClass {
 	public AuthenticationManager authManager(AuthenticationConfiguration authconfig) throws Exception {
 		return authconfig.getAuthenticationManager();
 	}
-	
+
 	@Bean
 	public JavaMailSender javaMailSender() {
-	    JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-	    mailSender.setHost("smtp.gmail.com");
-	    mailSender.setPort(587);
-	    mailSender.setUsername("prathapshanmugam5@gmail.com");
-	    mailSender.setPassword("hdlh hkrg lfby wkrb");
-	    
-	    Properties props = mailSender.getJavaMailProperties();
-	    props.put("mail.smtp.auth", "true");
-	    props.put("mail.smtp.starttls.enable", "true");
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+		mailSender.setHost("smtp.gmail.com");
+		mailSender.setPort(587);
+		mailSender.setUsername("prathapshanmugam5@gmail.com");
+		mailSender.setPassword("hdlh hkrg lfby wkrb");
 
-	    return mailSender;
+		Properties props = mailSender.getJavaMailProperties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+
+		return mailSender;
 	}
-
 
 }

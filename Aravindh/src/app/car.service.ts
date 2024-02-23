@@ -27,6 +27,10 @@ export class CarService {
   return this.http.get<Car[]>(`${this.baseurl}getAllUser`)
  }
 
+ getUserDetailsByUserName(name:string){
+  return this.http.get<Car>(`${this.baseurl}getUser/${name}`)
+ }
+
  updateRoles(id:number,car: Car){
 
 
@@ -65,6 +69,16 @@ openSnackBarGreen(message: string) {
 
 sendVerificationString(randomString: string) {
   return this.http.get<Car[]>(`${this.baseurl}getAllUser`);
+}
+
+
+ForgetPassword(name: string, password: string) {
+  const verifyOtp = { name, password };
+  console.log(verifyOtp);
+
+
+  return this.http.put<any>(`${this.baseurl}ForgetPassword`, verifyOtp);
+
 }
 
 }
