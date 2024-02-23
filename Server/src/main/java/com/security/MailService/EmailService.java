@@ -8,6 +8,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.security.configs.entity.Product;
+import com.security.configs.entity.UserInfo;
 import com.security.controller.ProductController;
 import com.security.entity.EmailRequest;
 import com.security.repository.OrderRepositary;
@@ -17,6 +18,9 @@ import jakarta.mail.internet.MimeMessage;
 
 @Service
 public class EmailService {
+	
+	
+	
 
 	@Autowired
 	ProductController prod;
@@ -53,6 +57,31 @@ public class EmailService {
 					+ "<p>Thank you once again for choosing oYo. We value your business and look forward to serving you again in the future.</p>"
 					+ "<p>Warm regards,</p>" + "<p style='color: green;'>Aravindh<br>" + "CEO<br>" + "oYo<br>"
 					+ "aadhiaravindh007@gmail.com</p>";
+
+			helper.setText(emailContent, true);
+
+			javaMailSender.send(mimeMessage);
+
+		} catch (MessagingException e) {
+
+		}
+	}
+	
+	
+	
+	public void sendOtpVerification(UserInfo pro) {
+
+		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
+		
+
+		try {
+			helper.setFrom(fromEmail);
+			helper.setTo(pro.getEmail());
+			helper.setSubject("Verify Your Account");
+			// Construct the email content using HTML
+			String emailContent = "<h1>"+pro.getOtp()+"</h1>";
+					
 
 			helper.setText(emailContent, true);
 

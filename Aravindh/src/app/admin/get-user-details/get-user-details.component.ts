@@ -25,7 +25,9 @@ export class GetUserDetailsComponent {
     password: '',
     age: 0,
     mobile: 0,
-    gender: ''
+    gender: '',
+    email: '',
+    otp: ''
   }; // Initialize it with an empty string or default value
 
   AllUserDetails: Car[] = [];

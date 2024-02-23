@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.security.MailService.EmailService;
 import com.security.configs.entity.Cart;
+import com.security.configs.entity.UserInfo;
 import com.security.entity.EmailRequest;
 import com.security.repository.CartRepositary;
 import com.security.repository.OrderRepositary;
@@ -91,6 +92,20 @@ public class CartController {
 	    // Return the saved email request
 	    return emailRequest;
 	}
+	
+	
+	@PostMapping("/sendOtpVerification")
+	public UserInfo sendOtpVerification(@RequestBody UserInfo emailRequest) {
+	   
+	    
+	    // Send confirmation email
+	    emailService.sendOtpVerification(emailRequest);
+	    
+	    // Return the saved email request
+	    return emailRequest;
+	}
+	
+	
 	
 	
 

@@ -28,7 +28,9 @@ export class FirstComponent implements OnInit {
     age: 0,
     mobile: 0,
     gender: '',
-    roles: ''
+    roles: '',
+    email: '',
+    otp: ''
   };
 
   allImage: Image[] = [];

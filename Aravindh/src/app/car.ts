@@ -7,4 +7,6 @@ export class Car {
     mobile: number;
     gender: string;
     roles:string;
+    email:string;
+    otp:string;
 }

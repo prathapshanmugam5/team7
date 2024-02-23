@@ -22,7 +22,6 @@ public class EmailRequest {
 	 private String address;
 	 private long amount;
 	 private long mobile;
-
 	public String getEmail() {
 		return email;
 	}
