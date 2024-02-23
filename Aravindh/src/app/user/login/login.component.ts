@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
 
@@ -16,6 +16,7 @@ export class LoginComponent {
 
   loginForm: FormGroup;
   errorMessage: string;
+  userDetails: Car[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,9 +26,10 @@ export class LoginComponent {
   ) { }
 
   ngOnInit() {
+    this.getAll();
 
     this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required]],
+      username: ['', [Validators.required],[this.usernameExistsValidator()]],
       password: [
         '',
         [
@@ -83,6 +85,21 @@ export class LoginComponent {
     this.eyeIcon = this.showPassword ? 'fas fa-eye' : 'fas fa-eye-slash';
   }
 
+  getAll() {
+    this.carService.getAllUser().subscribe((res) => {
+      this.userDetails = res;
+    });
+  }
+
+
+
+  usernameExistsValidator(): AsyncValidatorFn {
+    return (control: AbstractControl): Promise<ValidationErrors | null> => {
+      const username = control.value;
+      const isUsernameExists = this.userDetails.some(user => user.name === username);
+      return Promise.resolve(isUsernameExists ? { usernameExists: true } : null);
+    };
+  }
 
 
 

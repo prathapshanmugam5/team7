@@ -202,7 +202,7 @@
                 </label>
             </div>
 
-            <button type="button" class="btn btn-success mt-3" (click)="generateAndSendVerificationString()"
+            <button type="button" class="btn btn-success mt-3 me-3" (click)="generateAndSendVerificationString()"
                 [disabled]="verificationRequested || !registrationForm.valid || !registrationForm.get('verificationCheckbox')?.value">
                 Generate & Send Verification String
             </button>
