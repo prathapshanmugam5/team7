@@ -2,7 +2,7 @@ package com.security.controller;
 
 import java.util.List;
 
-
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -63,7 +63,6 @@ public class JwtExampleController {
 	}
 
 	@GetMapping(value="/getUser/{name}")
-	
 	public UserInfo getUser(@PathVariable("name") String name) {
 		return jwtres.findByName(name).get();
 	}
@@ -72,6 +71,17 @@ public class JwtExampleController {
 	public List<UserInfo> getAllUser() {
 		return jwtres.findAll();
 	}
+	
+	@PutMapping(value="/ForgetPassword")
+	public UserInfo ForgetPassword(@RequestBody UserInfo useri) {
+		
+		UserInfo x= this.getUser(useri.getName());
+		System.out.println(x);
+		
+		x.setPassword(passwordEncoder.encode(useri.getPassword()));
+		return jwtres.save(x);
+	}
+	
 	 	
 	@PostMapping(value="/addUser")
 	public UserInfo addUser(@RequestBody UserInfo user) {

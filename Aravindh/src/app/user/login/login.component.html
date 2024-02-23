@@ -69,12 +69,21 @@
               <button class="btn btn-outline-secondary" type="button" (click)="togglePassword()">
                   <i class="{{ eyeIcon }}"></i> <!-- Font Awesome eye icon -->
               </button>
+             
           </div>
+         
         </div>
         <div *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched"
           class="text-danger">Password is required.
         </div>
       </div>
+
+      <div *ngIf="loginForm.value.username">
+        <span><a [routerLink]="['/user/forgetPassword', loginForm.value.username]">Forget Password</a></span>
+      </div>
+      
+
+      
 
       <p>Don't have an Account? <a routerLink="/user/register">Register Now</a></p>
       <button type="submit" class="btn btn-primary mt-3" [disabled]="loginForm.invalid">

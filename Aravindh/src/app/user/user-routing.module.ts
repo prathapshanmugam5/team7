@@ -11,6 +11,7 @@ import { ProductComponent } from './product/product.component';
 import { CategoryComponent } from './category/category.component';
 import { AuthGuard } from '../AuthGuard.service';
 import { TypeComponent } from './type/type.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 const routes: Routes = [
   {path:"home",component:HomeComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path:"about",component:AboutComponent},
   {path:"product",component:ProductComponent},
   { path: "category/:type/:category", component: CategoryComponent},
-  {path:"type/:type",component:TypeComponent}
+  {path:"type/:type",component:TypeComponent},
+  {path:"forgetPassword/:username",component:ForgetPasswordComponent}
 ];
 
 @NgModule({

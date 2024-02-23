@@ -15,6 +15,7 @@ import { CategoryComponent } from './category/category.component';
 import { TypeComponent } from './type/type.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { NgModule } from '@angular/core';
     AboutComponent,
     ProductComponent,
     CategoryComponent,
-    TypeComponent
+    TypeComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     CommonModule,
