@@ -29,7 +29,7 @@ export class LoginComponent {
     this.getAll();
 
     this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required],[this.usernameExistsValidator()]],
+      username: ['', [Validators.required]],
       password: [
         '',
         [
@@ -39,6 +39,7 @@ export class LoginComponent {
         ],
       ],
     });
+    
   }
 
 
@@ -97,10 +98,15 @@ export class LoginComponent {
     return (control: AbstractControl): Promise<ValidationErrors | null> => {
       const username = control.value;
       const isUsernameExists = this.userDetails.some(user => user.name === username);
+      console.log(isUsernameExists);
       return Promise.resolve(isUsernameExists ? { usernameExists: true } : null);
     };
+  }
+  
+  
+   
+    
   }
 
 
 
-}
