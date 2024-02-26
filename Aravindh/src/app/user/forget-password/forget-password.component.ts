@@ -16,6 +16,7 @@ export class ForgetPasswordComponent implements OnInit {
   LoginUserName: string;
   ForgetPasswordUserDetails: Car;
 
+
   showPassword: boolean = false;
   eyeIcon: string = 'fas fa-eye-slash';
   GeneratedRandomString: string;
@@ -36,6 +37,7 @@ export class ForgetPasswordComponent implements OnInit {
     this.LoginUserName = this.act.snapshot.params['username'];
     console.log(this.LoginUserName);
     this.getUserDetailsByUserName();
+   
 
   }
 
