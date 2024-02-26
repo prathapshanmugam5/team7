@@ -85,7 +85,7 @@ export class RegisterComponent implements OnInit {
 
   generateAndSendVerificationString() {
     // Generate random string
-    const randomString = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    const randomString = (Math.floor(1000000 + Math.random() * 9000000)).toString();
     console.log(randomString);
 
     // Update the generated random string
